@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DifficultyActivity">
+
+    <ImageView
+        android:id="@+id/HomeDifficultyImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_button" />
+
+    <ImageView
+        android:id="@+id/EasyImageView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/HardImageView"
+        app:layout_constraintEnd_toStartOf="@+id/MediumImageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/easy_button" />
+
+    <ImageView
+        android:id="@+id/MediumImageView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/HardcoreImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/EasyImageView"
+        app:srcCompat="@drawable/medium_button" />
+
+    <ImageView
+        android:id="@+id/HardImageView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/HardcoreImageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/hard_button" />
+
+    <ImageView
+        android:id="@+id/HardcoreImageView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/HardImageView"
+        app:srcCompat="@drawable/hardcore_button" />
+
+    <TextView
+        android:id="@+id/EasytextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simple"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/EasyImageView"
+        app:layout_constraintStart_toStartOf="@+id/EasyImageView"
+        app:layout_constraintTop_toBottomOf="@+id/EasyImageView" />
+
+    <TextView
+        android:id="@+id/HardTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moyen"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/MediumImageView"
+        app:layout_constraintStart_toStartOf="@+id/MediumImageView"
+        app:layout_constraintTop_toBottomOf="@+id/MediumImageView" />
+
+    <TextView
+        android:id="@+id/HardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficile"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/HardImageView"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="@+id/HardImageView"
+        app:layout_constraintTop_toBottomOf="@+id/HardImageView" />
+
+    <TextView
+        android:id="@+id/HardcoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hardcore"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/HardcoreImageView"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/HardcoreImageView"
+        app:layout_constraintTop_toBottomOf="@+id/HardcoreImageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

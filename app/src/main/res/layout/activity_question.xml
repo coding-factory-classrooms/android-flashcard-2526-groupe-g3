@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionActivity">
+
+    <ImageView
+        android:id="@+id/PeopleImageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/people_question_image" />
+
+    <Button
+        android:id="@+id/ReponseAButton2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Réponse A"
+        app:layout_constraintBottom_toTopOf="@+id/ReponseBButton2"
+        app:layout_constraintEnd_toEndOf="@+id/PeopleImageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/PeopleImageView2"
+        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView2" />
+
+    <Button
+        android:id="@+id/ReponseBButton2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Réponse B"
+        app:layout_constraintBottom_toTopOf="@+id/ReponseCButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ReponseAButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/ReponseAButton2"
+        app:layout_constraintTop_toBottomOf="@+id/ReponseAButton2" />
+
+    <Button
+        android:id="@+id/ReponseCButton2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Réponse C"
+        app:layout_constraintBottom_toTopOf="@+id/ReponseDButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ReponseBButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/ReponseBButton2"
+        app:layout_constraintTop_toBottomOf="@+id/ReponseBButton2" />
+
+    <Button
+        android:id="@+id/ReponseDButton2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Réponse D"
+        app:layout_constraintBottom_toTopOf="@+id/AnswerTextView2"
+        app:layout_constraintEnd_toEndOf="@+id/ReponseCButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/ReponseCButton2"
+        app:layout_constraintTop_toBottomOf="@+id/ReponseCButton2" />
+
+    <TextView
+        android:id="@+id/AnswerTextView2"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        android:text="Bonne réponse !"
+        android:textColor="#289E01"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/HomeQuestionImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

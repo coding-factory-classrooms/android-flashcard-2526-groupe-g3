@@ -2,7 +2,6 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,31 +9,36 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
-
-    public static final String TAG = "MainActivity";
+public class DifficultyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_difficulty);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        findViewById(R.id.StartButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, DifficultyActivity.class);
+        findViewById(R.id.HomeDifficultyImageView).setOnClickListener(view->{
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
-        findViewById(R.id.QuestionButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, QuestionActivity.class);
+        findViewById(R.id.EasyImageView).setOnClickListener(view->{
+            Intent intent = new Intent(this, TestActivity.class);
             startActivity(intent);
         });
-        findViewById(R.id.AboutButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, AboutActivity.class);
+        findViewById(R.id.MediumImageView).setOnClickListener(view->{
+            Intent intent = new Intent(this, TestActivity.class);
+            startActivity(intent);
+        });
+        findViewById(R.id.HardImageView).setOnClickListener(view->{
+            Intent intent = new Intent(this, TestActivity.class);
+            startActivity(intent);
+        });
+        findViewById(R.id.HardcoreImageView).setOnClickListener(view->{
+            Intent intent = new Intent(this, TestActivity.class);
             startActivity(intent);
         });
     }

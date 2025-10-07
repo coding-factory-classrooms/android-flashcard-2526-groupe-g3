@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <ImageView
+        android:id="@+id/HomeResultImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_button" />
+
+    <ImageView
+        android:id="@+id/ShareImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/share_button" />
+
+    <ImageView
+        android:id="@+id/ResultImageView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36"
+        app:srcCompat="@drawable/result_image" />
+
+    <Button
+        android:id="@+id/QuestionButton2"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:text="Question"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BackButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ResultTextView" />
+
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:text="Retour"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/QuestionButton2"
+        app:layout_constraintTop_toBottomOf="@+id/ResultTextView" />
+
+    <TextView
+        android:id="@+id/ResultTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="75%"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/QuestionButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ResultImageView"
+        app:layout_constraintStart_toStartOf="@+id/ResultImageView"
+        app:layout_constraintTop_toBottomOf="@+id/ResultImageView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

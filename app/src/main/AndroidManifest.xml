@@ -12,6 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Flashcard">
         <activity
+            android:name=".QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DifficultyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
