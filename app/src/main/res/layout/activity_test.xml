@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7443E6"
+    android:backgroundTint="#E1C4F6"
     tools:context=".TestActivity">
 
     <ImageView
@@ -21,17 +23,23 @@
         android:id="@+id/ReponseAButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:backgroundTint="#00FFFFFF"
         android:text="Réponse A"
+        android:textColor="#871D5F"
+        app:iconTint="#F0ECEC"
         app:layout_constraintBottom_toTopOf="@+id/ReponseBButton"
         app:layout_constraintEnd_toEndOf="@+id/PeopleImageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/PeopleImageView"
-        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView"
+        app:strokeColor="#8A0357"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/ReponseBButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:backgroundTint="#CE5BC5"
         android:text="Réponse B"
         app:layout_constraintBottom_toTopOf="@+id/ReponseCButton"
         app:layout_constraintEnd_toEndOf="@+id/ReponseAButton"

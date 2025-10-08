@@ -24,5 +24,7 @@ public class TestActivity extends BaseActivity {
 
         linkButton(R.id.HomeTestImageView, MainActivity.class);
         linkButton(R.id.ValidateButton, ResultActivity.class);
+
+
     }
 }
