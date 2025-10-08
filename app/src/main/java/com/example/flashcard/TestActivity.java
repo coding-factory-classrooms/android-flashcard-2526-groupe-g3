@@ -75,7 +75,8 @@ public class TestActivity extends BaseActivity {
                     }
 
                     int correctIndex = questionObj.getInt("correct");
-                    questionsList.add(new Question(imageId, answersList, correctIndex));
+                    int id = getResources().getIdentifier(imageId , "drawable", getPackageName());
+                    questionsList.add(new Question(imageId, answersList, correctIndex, id));
                 }
 
                 difficultiesList.add(new Difficulty(level, questionsList));

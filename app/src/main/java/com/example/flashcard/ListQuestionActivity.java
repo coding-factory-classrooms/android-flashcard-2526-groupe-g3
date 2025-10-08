@@ -2,6 +2,7 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListQuestionActivity extends BaseActivity {
 
@@ -33,20 +35,21 @@ public class ListQuestionActivity extends BaseActivity {
         ArrayList<Question> questions = new ArrayList<>();
         for (int i = 0; i < 5000; i++) {
             int ImageID = getResources().getIdentifier("question1" , "drawable", getPackageName());
-            ArrayList<String> a = new ArrayList<>();
+            List<String> a = new ArrayList<>();
             a.add("Paris");
             a.add("Londres");
             a.add("Berlin");
             a.add("Madrid");
-            questions.add(new Question(a, StringValueOf(ImageID, 0));
+            questions.add(new Question("question1", a, 0, ImageID));
         }
 
         // On branche tout le monde
         // Les données de l'adaptater
         // l'adaptater au recycleview
-        QuestionAdaptater adaptateur = new QuestionAdaptater(questions);
+        QuestionAdaptater adaptater = new QuestionAdaptater(questions);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(adaptateur);
+        recyclerView.setAdapter(adaptater);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 

@@ -21,15 +21,13 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
     public QuestionAdaptater(ArrayList<Question> questions) {this.questions = questions;}
 
     ArrayList<Question> questions;
-    Context context;
 
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
+        Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.activity_question_image, parent, false);
-
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -37,13 +35,13 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
     @Override
     public void onBindViewHolder(@NonNull QuestionAdaptater.ViewHolder holder, int position) {
         Question question = questions.get(position);
-
-        holder.questionImageView.setImageResource(ImageID);
+        holder.questionImageView.setImageResource(question.id);
+        linkButton(holder.questionActivityButton, ListQuestionActivity.class);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return questions.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
