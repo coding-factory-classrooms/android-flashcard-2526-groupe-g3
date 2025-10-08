@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -29,10 +30,24 @@ public class ListQuestionActivity extends BaseActivity {
         linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
 
 
-        // A vérifier
-        findViewById(R.id.recyclerView).setOnClickListener( view->{
-            Intent intent = new Intent(this, QuestionActivity.class);
-            startActivity(intent);
-        });
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i = 0; i < 5000; i++) {
+            int ImageID = getResources().getIdentifier("question1" , "drawable", getPackageName());
+            ArrayList<String> a = new ArrayList<>();
+            a.add("Paris");
+            a.add("Londres");
+            a.add("Berlin");
+            a.add("Madrid");
+            questions.add(new Question(a, StringValueOf(ImageID, 0));
+        }
+
+        // On branche tout le monde
+        // Les données de l'adaptater
+        // l'adaptater au recycleview
+        QuestionAdaptater adaptateur = new QuestionAdaptater(questions);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(adaptateur);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 }
