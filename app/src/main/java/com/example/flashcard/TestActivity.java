@@ -28,8 +28,8 @@ public class TestActivity extends BaseActivity {
     private int currentQuestion = 0;
     private ImageView questionImage;
     private LinearLayout answersContainer;
-    private List<Difficulty> difficultiesList = new ArrayList<>();
-    private Map<String, Integer> imageMap = new HashMap<>();
+    private final List<Difficulty> difficultiesList = new ArrayList<>();
+    private final Map<String, Integer> imageMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +84,8 @@ public class TestActivity extends BaseActivity {
             Log.e("TestActivity", "Erreur parsing JSON", e);
         }
 
-        if (!difficultiesList.isEmpty() && currentDifficulty < difficultiesList.size()) {
-            showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
-        }
+        showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
+
     }
 
     private void initImageMap() {
@@ -104,7 +103,7 @@ public class TestActivity extends BaseActivity {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("TestActivity", "Erreur", e);
         }
     }
 
@@ -137,16 +136,15 @@ public class TestActivity extends BaseActivity {
         Question question = difficultiesList.get(currentDifficulty).questions.get(currentQuestion);
 
         if (selectedIndex == question.correct) {
-            Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mauvaise réponse", Toast.LENGTH_SHORT).show();
         }
 
         currentQuestion++;
         if (currentQuestion < difficultiesList.get(currentDifficulty).questions.size()) {
             showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
         } else {
-            Toast.makeText(this, "Quiz terminé !", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ResultActivity.class);
             startActivity(intent);
             finish();
