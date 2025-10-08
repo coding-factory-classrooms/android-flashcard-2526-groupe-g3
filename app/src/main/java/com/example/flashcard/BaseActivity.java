@@ -13,6 +13,14 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         button.setOnClickListener(this);
     }
 
+    protected void linkButtonWithDifficulty(int buttonId, Class<?> activityClass, int difficultyIndex) {
+        findViewById(buttonId).setOnClickListener(v -> {
+            Intent intent = new Intent(this, activityClass);
+            intent.putExtra("difficulty_index", difficultyIndex);
+            startActivity(intent);
+        });
+    }
+
     @Override
     public void onClick(View v) {
         startActivity(new Intent(this, (Class<?>) v.getTag()));

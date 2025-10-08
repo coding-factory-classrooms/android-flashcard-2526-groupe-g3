@@ -22,9 +22,10 @@ public class DifficultyActivity extends BaseActivity {
             return insets;
         });
         linkButton(R.id.HomeDifficultyImageView, MainActivity.class);
-        linkButton(R.id.EasyImageView, TestActivity.class);
-        linkButton(R.id.MediumImageView, TestActivity.class);
-        linkButton(R.id.HardImageView, TestActivity.class);
-        linkButton(R.id.HardcoreImageView, TestActivity.class);
+        linkButtonWithDifficulty(R.id.EasyImageView, TestActivity.class, 0);
+        linkButtonWithDifficulty(R.id.MediumImageView, TestActivity.class, 1);
+        linkButtonWithDifficulty(R.id.HardImageView, TestActivity.class, 2);
+        linkButtonWithDifficulty(R.id.HardcoreImageView, TestActivity.class, 3);
+
     }
 }

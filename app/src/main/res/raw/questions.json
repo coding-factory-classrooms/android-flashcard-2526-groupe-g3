@@ -4,12 +4,12 @@
       "level": "Facile",
       "questions": [
         {
-          "image": "question1",
+          "image_id": "question1",
           "answers": ["Paris", "Londres", "Berlin", "Madrid"],
           "correct": 0
         },
         {
-          "image": "question2",
+          "image_id": "question2",
           "answers": ["3", "4", "5", "6"],
           "correct": 1
         }
@@ -19,7 +19,7 @@
       "level": "Moyen",
       "questions": [
         {
-          "image": "question3",
+          "image_id": "question3",
           "answers": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
           "correct": 1
         }
@@ -29,7 +29,7 @@
       "level": "Difficile",
       "questions": [
         {
-          "image": "question4",
+          "image_id": "question4",
           "answers": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
           "correct": 3
         }
