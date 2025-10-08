@@ -52,46 +52,51 @@ public class TestActivity extends BaseActivity {
         initImageMap();
 
         String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
-
-        try {
-            JSONObject root = new JSONObject(json);
-            JSONArray difficultiesArray = root.getJSONArray("difficulties");
-
-            for (int i = 0; i < difficultiesArray.length(); i++) {
-                JSONObject difficultyObj = difficultiesArray.getJSONObject(i);
-                String level = difficultyObj.getString("level");
-
-                JSONArray questionsArray = difficultyObj.getJSONArray("questions");
-                List<Question> questionsList = new ArrayList<>();
-
-                for (int j = 0; j < questionsArray.length(); j++) {
-                    JSONObject questionObj = questionsArray.getJSONObject(j);
-                    String imageId = questionObj.getString("image_id");
-
-                    JSONArray answersArray = questionObj.getJSONArray("answers");
-                    List<String> answersList = new ArrayList<>();
-                    for (int k = 0; k < answersArray.length(); k++) {
-                        answersList.add(answersArray.getString(k));
-                    }
-
-                    int correctIndex = questionObj.getInt("correct");
-                    int id = getResources().getIdentifier(imageId , "drawable", getPackageName());
-                    questionsList.add(new Question(imageId, answersList, correctIndex, id));
-                }
-
-                difficultiesList.add(new Difficulty(level, questionsList));
-            }
-        } catch (JSONException e) {
-            Log.e("TestActivity", "Erreur parsing JSON", e);
-        }
+        parseJsonData(json);
 
         showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
 
     }
 
+    private void parseJsonData(String jsonData) {
+        try {
+            JSONObject rootObject = new JSONObject(jsonData);
+            JSONArray difficultyArray = rootObject.getJSONArray("difficulties");
+
+            for (int difficultyIndex = 0; difficultyIndex < difficultyArray.length(); difficultyIndex++) {
+                JSONObject difficultyJson = difficultyArray.getJSONObject(difficultyIndex);
+                String difficultyLevel = difficultyJson.getString("level");
+
+                JSONArray questionArray = difficultyJson.getJSONArray("questions");
+                List<Question> questionList = new ArrayList<>();
+
+                for (int questionIndex = 0; questionIndex < questionArray.length(); questionIndex++) {
+                    JSONObject questionJson = questionArray.getJSONObject(questionIndex);
+                    String imageName = questionJson.getString("image_id");
+
+                    JSONArray answerArray = questionJson.getJSONArray("answers");
+                    List<String> answerList = new ArrayList<>();
+
+                    for (int answerIndex = 0; answerIndex < answerArray.length(); answerIndex++) {
+                        answerList.add(answerArray.getString(answerIndex));
+                    }
+
+                    int correctAnswerIndex = questionJson.getInt("correct");
+                    int id = getResources().getIdentifier(imageName,"drawable", getPackageName());
+                    questionList.add(new Question(imageName, answerList, correctAnswerIndex, id));
+                }
+
+                difficultiesList.add(new Difficulty(difficultyLevel, questionList));
+            }
+
+        } catch (JSONException e) {
+            Log.e("TestActivity", "Erreur lors du parsing du JSON", e);
+        }
+    }
+
+
     private void initImageMap() {
         imageMap.clear();
-
         try {
             Class<?> drawableClass = R.drawable.class;
             java.lang.reflect.Field[] fields = drawableClass.getFields();
