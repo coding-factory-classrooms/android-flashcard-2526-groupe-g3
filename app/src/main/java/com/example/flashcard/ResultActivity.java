@@ -29,7 +29,7 @@ public class ResultActivity extends BaseActivity {
         Intent intent = getIntent();
         int correctAnswerCount = intent.getIntExtra("correctAnswerCount", 0);
         int totalQuestions = intent.getIntExtra("totalQuestions", 0);
-        String correctResultPercent = String.format(Locale.US, "%.2f", (float) correctAnswerCount * 100 / (float) totalQuestions) + "%";
+        String correctResultPercent = String.format(Locale.US, "%.2f", (float) correctAnswerCount * 100 / (float) totalQuestions) + " %";
 
         TextView percentText = findViewById(R.id.ResultTextView);
         percentText.setText(correctResultPercent);
