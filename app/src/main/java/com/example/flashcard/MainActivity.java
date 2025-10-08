@@ -1,16 +1,13 @@
 package com.example.flashcard;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String TAG = "MainActivity";
 
@@ -25,17 +22,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        findViewById(R.id.StartButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, DifficultyActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.QuestionButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, QuestionActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.AboutButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, AboutActivity.class);
-            startActivity(intent);
-        });
+        linkButton(R.id.StartButton, DifficultyActivity.class);
+        linkButton(R.id.QuestionButton, ListQuestionActivity.class);
+        linkButton(R.id.AboutButton, AboutActivity.class);
     }
 }

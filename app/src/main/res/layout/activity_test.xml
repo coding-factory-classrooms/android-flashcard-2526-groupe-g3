@@ -64,14 +64,26 @@
     <TextView
         android:id="@+id/AnswerTextView"
         android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="75dp"
         android:text="Bonne réponse !"
         android:textColor="#289E01"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ValidateButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ReponseDButton" />
+
+    <Button
+        android:id="@+id/ValidateButton"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Réponse C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/AnswerTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/AnswerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/AnswerTextView" />
 
     <ImageView
         android:id="@+id/HomeTestImageView"

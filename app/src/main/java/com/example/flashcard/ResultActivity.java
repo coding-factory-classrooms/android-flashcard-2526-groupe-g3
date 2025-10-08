@@ -9,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ResultActivity extends AppCompatActivity {
+public class ResultActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +21,9 @@ public class ResultActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        findViewById(R.id.HomeResultImageView).setOnClickListener( view->{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
 
-        findViewById(R.id.QuestionButton2).setOnClickListener( view->{
-            Intent intent = new Intent(this, ListQuestionActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.BackButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, DifficultyActivity.class);
-            startActivity(intent);
-        });
+        linkButton(R.id.HomeResultImageView, MainActivity.class);
+        linkButton(R.id.QuestionButton2, ListQuestionActivity.class);
+        linkButton(R.id.BackButton, DifficultyActivity.class);
     }
 }

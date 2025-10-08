@@ -9,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class DifficultyActivity extends AppCompatActivity {
+public class DifficultyActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,25 +21,10 @@ public class DifficultyActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        findViewById(R.id.HomeDifficultyImageView).setOnClickListener(view->{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.EasyImageView).setOnClickListener(view->{
-            Intent intent = new Intent(this, TestActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.MediumImageView).setOnClickListener(view->{
-            Intent intent = new Intent(this, TestActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.HardImageView).setOnClickListener(view->{
-            Intent intent = new Intent(this, TestActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.HardcoreImageView).setOnClickListener(view->{
-            Intent intent = new Intent(this, TestActivity.class);
-            startActivity(intent);
-        });
+        linkButton(R.id.HomeDifficultyImageView, MainActivity.class);
+        linkButton(R.id.EasyImageView, TestActivity.class);
+        linkButton(R.id.MediumImageView, TestActivity.class);
+        linkButton(R.id.HardImageView, TestActivity.class);
+        linkButton(R.id.HardcoreImageView, TestActivity.class);
     }
 }

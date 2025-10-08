@@ -9,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,26 +22,7 @@ public class TestActivity extends AppCompatActivity {
             return insets;
         });
 
-        findViewById(R.id.HomeTestImageView).setOnClickListener( view->{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
-
-        findViewById(R.id.ReponseAButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, ResultActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.ReponseBButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, ResultActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.ReponseCButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, ResultActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.ReponseDButton).setOnClickListener( view->{
-            Intent intent = new Intent(this, ResultActivity.class);
-            startActivity(intent);
-        });
+        linkButton(R.id.HomeTestImageView, MainActivity.class);
+        linkButton(R.id.ValidateButton, ResultActivity.class);
     }
 }

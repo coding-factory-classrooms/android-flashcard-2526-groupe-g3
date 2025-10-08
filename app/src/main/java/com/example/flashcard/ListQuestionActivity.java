@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ListQuestionActivity extends AppCompatActivity {
+public class ListQuestionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,10 @@ public class ListQuestionActivity extends AppCompatActivity {
             return insets;
         });
 
-        findViewById(R.id.HomeListQuestionImageView).setOnClickListener( view->{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
+        linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
 
+
+        // A vérifier
         findViewById(R.id.recyclerView).setOnClickListener( view->{
             Intent intent = new Intent(this, QuestionActivity.class);
             startActivity(intent);
