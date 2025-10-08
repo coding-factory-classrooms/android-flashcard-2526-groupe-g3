@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -117,6 +118,10 @@ public class TestActivity extends BaseActivity {
         }
 
         answersContainer.removeAllViews();
+
+        TextView currentQuestionTextView = findViewById(R.id.CurrentQuestionTextView);
+        String currentQuestionText = ("Question " + (currentQuestion+1) + " / " + difficultiesList.get(currentDifficulty).questions.toArray().length);
+        currentQuestionTextView.setText(currentQuestionText);
 
         for (int i = 0; i < question.answers.size(); i++) {
             final int index = i;

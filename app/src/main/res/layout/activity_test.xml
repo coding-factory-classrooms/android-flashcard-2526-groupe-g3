@@ -36,4 +36,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PeopleImageView"></LinearLayout>
+
+    <TextView
+        android:id="@+id/QuestionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WHO IS THIS ?"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/answersContainer"
+        app:layout_constraintEnd_toEndOf="@+id/answersContainer"
+        app:layout_constraintStart_toStartOf="@+id/answersContainer"
+        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView" />
+
+    <TextView
+        android:id="@+id/CurrentQuestionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/answersContainer"
+        app:layout_constraintStart_toStartOf="@+id/answersContainer"
+        app:layout_constraintTop_toBottomOf="@+id/answersContainer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
