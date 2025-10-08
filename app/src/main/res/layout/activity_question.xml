@@ -55,36 +55,11 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:text="Réponse D"
-        app:layout_constraintBottom_toTopOf="@+id/AnswerTextView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ReponseCButton2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/ReponseCButton2"
         app:layout_constraintTop_toBottomOf="@+id/ReponseCButton2" />
-
-    <TextView
-        android:id="@+id/AnswerTextView2"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="30dp"
-        android:text="Bonne réponse !"
-        android:textColor="#289E01"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/ValidateButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseDButton2" />
-
-    <Button
-        android:id="@+id/ValidateButton2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse C"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/AnswerTextView2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/AnswerTextView2"
-        app:layout_constraintTop_toBottomOf="@+id/AnswerTextView2" />
 
     <ImageView
         android:id="@+id/HomeQuestionImageView"
@@ -95,4 +70,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_button" />
+
+    <LinearLayout
+        android:id="@+id/QuestionLineaLayout"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView2"></LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

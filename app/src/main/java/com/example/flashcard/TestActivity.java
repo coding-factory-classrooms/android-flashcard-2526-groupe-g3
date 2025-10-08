@@ -28,7 +28,7 @@ public class TestActivity extends BaseActivity {
     private int currentQuestion = 0;
     private ImageView questionImage;
     private LinearLayout answersContainer;
-    private final List<Difficulty> difficultiesList = new ArrayList<>();
+    public final List<Difficulty> difficultiesList = new ArrayList<>();
     private final Map<String, Integer> imageMap = new HashMap<>();
 
     @Override
@@ -58,7 +58,7 @@ public class TestActivity extends BaseActivity {
 
     }
 
-    private void parseJsonData(String jsonData) {
+    public void parseJsonData(String jsonData) {
         try {
             JSONObject rootObject = new JSONObject(jsonData);
             JSONArray difficultyArray = rootObject.getJSONArray("difficulties");

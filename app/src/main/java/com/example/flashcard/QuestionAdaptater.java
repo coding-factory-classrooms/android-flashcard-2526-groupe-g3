@@ -2,7 +2,11 @@ package com.example.flashcard;
 
 
 
+import static androidx.core.content.ContextCompat.startActivities;
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.ViewHolder> {
+public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.ViewHolder>{
 
     public QuestionAdaptater(ArrayList<Question> questions) {this.questions = questions;}
 
@@ -32,11 +36,15 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
         return viewHolder;
     }
 
+    //This function
     @Override
     public void onBindViewHolder(@NonNull QuestionAdaptater.ViewHolder holder, int position) {
+        //Create the line of the list of question
         Question question = questions.get(position);
         holder.questionImageView.setImageResource(question.id);
-        linkButton(holder.questionActivityButton, ListQuestionActivity.class);
+
+        //Next line add the Question to the function LinkData
+        holder.linkData(question);
     }
 
     @Override
@@ -47,11 +55,26 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView questionImageView;
         Button questionActivityButton;
+        Question clickedQuestion;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
+            Context context = itemView.getContext();
             questionImageView = itemView.findViewById(R.id.QuestionImageView);
             questionActivityButton= itemView.findViewById(R.id.QuestionActivityButton);
+
+            //Change the Activity to the Question activity with the question that is clicked
+            questionActivityButton.setOnClickListener( view-> {
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("Question", clickedQuestion);
+
+                context.startActivity(intent);
+            });
+        }
+
+        //LinkData is used to make a link between the question and the button
+        public void linkData(Question question) {
+            clickedQuestion = question;
         }
     }
 }

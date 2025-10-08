@@ -13,10 +13,16 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListQuestionActivity extends BaseActivity {
+public class ListQuestionActivity extends BaseActivity{
+
+    public final ArrayList<Question> questionsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +38,49 @@ public class ListQuestionActivity extends BaseActivity {
         linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
 
 
-        ArrayList<Question> questions = new ArrayList<>();
-        for (int i = 0; i < 5000; i++) {
-            int ImageID = getResources().getIdentifier("question1" , "drawable", getPackageName());
-            List<String> a = new ArrayList<>();
-            a.add("Paris");
-            a.add("Londres");
-            a.add("Berlin");
-            a.add("Madrid");
-            questions.add(new Question("question1", a, 0, ImageID));
-        }
+        String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
+        parseJsonData(json);
 
-        // On branche tout le monde
-        // Les données de l'adaptater
-        // l'adaptater au recycleview
-        QuestionAdaptater adaptater = new QuestionAdaptater(questions);
+        // Link the adaptater and the recycler
+        QuestionAdaptater adaptater = new QuestionAdaptater(questionsList);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adaptater);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
+    //Add the Jsonfile in an object
+    public void parseJsonData(String jsonData) {
+        try {
+            JSONObject rootObject = new JSONObject(jsonData);
+            JSONArray difficultyArray = rootObject.getJSONArray("difficulties");
+
+            for (int difficultyIndex = 0; difficultyIndex < difficultyArray.length(); difficultyIndex++) {
+                JSONObject difficultyJson = difficultyArray.getJSONObject(difficultyIndex);
+
+                JSONArray questionArray = difficultyJson.getJSONArray("questions");
+
+                for (int questionIndex = 0; questionIndex < questionArray.length(); questionIndex++) {
+                    JSONObject questionJson = questionArray.getJSONObject(questionIndex);
+                    String imageName = questionJson.getString("image_id");
+
+                    JSONArray answerArray = questionJson.getJSONArray("answers");
+                    List<String> answerList = new ArrayList<>();
+
+                    for (int answerIndex = 0; answerIndex < answerArray.length(); answerIndex++) {
+                        answerList.add(answerArray.getString(answerIndex));
+                    }
+
+                    int correctAnswerIndex = questionJson.getInt("correct");
+                    int id = getResources().getIdentifier(imageName,"drawable", getPackageName());
+                    questionsList.add(new Question(imageName, answerList, correctAnswerIndex, id));
+                }
+            }
+
+        } catch (JSONException e) {
+            Log.e("TestActivity", "Erreur lors du parsing du JSON", e);
+        }
     }
 
 }

@@ -2,14 +2,26 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
 public class QuestionActivity extends BaseActivity {
+
+    ImageView imageQuestion;
+    List<String> answersList;
+    Toast toast;
+    Spinner answersContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +35,50 @@ public class QuestionActivity extends BaseActivity {
         });
 
         linkButton(R.id.HomeQuestionImageView, MainActivity.class);
-        linkButton(R.id.ValidateButton2, ListQuestionActivity.class);
+
+        //Create all the intent
+        Intent srcIntent = getIntent();
+        Intent intent = new Intent(this, QuestionActivity.class);
+
+        //Take the variable named question
+        Question question =srcIntent.getParcelableExtra("Question");
+
+        LinearLayout answersLayout = findViewById(R.id.QuestionLineaLayout);
+
+        imageQuestion = findViewById(R.id.PeopleImageView2);
+        answersList = question.answers;
+
+        //If there's no image, put nothing
+        if (imageQuestion != null) {
+            imageQuestion.setImageResource(question.id);
+        } else {
+            imageQuestion.setImageResource(0);
+        }
+
+        for(int i = 0; i < answersList.size(); i++){
+            final int j = i;
+
+            // Create a button with the response and add it to the view
+            Button answerButton = new Button(this);
+            answerButton.setText(question.answers.get(i));
+            answersLayout.addView(answerButton);
+
+            //Take the button to say it's the good or the wrong
+            answerButton.setOnClickListener( view ->{
+
+                //Add a different toast if it's the good response or the wrong
+                if(j != question.correct){
+                    toast = Toast.makeText(this, "Mauvaise réponse, la bonne réponse " +
+                            "était : "+question.answers.get(question.correct)+".", Toast.LENGTH_LONG);
+                }
+                else{
+                    toast = Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_LONG);
+                }
+
+                toast.show();
+                startActivity(intent);
+                finish();
+            });
+        }
     }
 }
