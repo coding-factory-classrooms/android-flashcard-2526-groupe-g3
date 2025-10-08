@@ -2,11 +2,9 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -29,10 +27,14 @@ public class ResultActivity extends BaseActivity {
         Intent intent = getIntent();
         int correctAnswerCount = intent.getIntExtra("correctAnswerCount", 0);
         int totalQuestions = intent.getIntExtra("totalQuestions", 0);
-        String correctResultPercent = String.format(Locale.US, "%.2f", (float) correctAnswerCount * 100 / (float) totalQuestions) + " %";
 
-        TextView percentText = findViewById(R.id.ResultTextView);
-        percentText.setText(correctResultPercent);
+        String correctResultPercent = String.format(Locale.US, "%.2f", (float) correctAnswerCount * 100 / (float) totalQuestions) + " %";
+        TextView resultPercentText = findViewById(R.id.ResultPercentTextView);
+        resultPercentText.setText(correctResultPercent);
+
+        String correctResultNumber = correctAnswerCount + " / " + totalQuestions;
+        TextView resultNumberText = findViewById(R.id.ResultNumberTextView);
+        resultNumberText.setText(correctResultNumber);
 
         linkButton(R.id.HomeResultImageView, MainActivity.class);
         linkButton(R.id.QuestionButton2, ListQuestionActivity.class);

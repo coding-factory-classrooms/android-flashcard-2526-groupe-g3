@@ -30,12 +30,13 @@
     <ImageView
         android:id="@+id/ResultImageView"
         android:layout_width="350dp"
-        android:layout_height="350dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="200dp"
+        android:layout_margin="100dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36"
         app:srcCompat="@drawable/result_image" />
 
     <Button
@@ -48,7 +49,7 @@
         app:layout_constraintEnd_toStartOf="@+id/BackButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ResultTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/ResultPercentTextView" />
 
     <Button
         android:id="@+id/BackButton"
@@ -60,16 +61,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/QuestionButton2"
-        app:layout_constraintTop_toBottomOf="@+id/ResultTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/ResultPercentTextView" />
 
     <TextView
-        android:id="@+id/ResultTextView"
+        android:id="@+id/ResultPercentTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="75%"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/QuestionButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ResultImageView"
+        app:layout_constraintStart_toStartOf="@+id/ResultImageView"
+        app:layout_constraintTop_toBottomOf="@+id/ResultNumberTextView" />
+
+    <TextView
+        android:id="@+id/ResultNumberTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:layout_marginTop="48dp"
+        android:text="0%"
+        android:textAlignment="center"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="@+id/ResultImageView"
         app:layout_constraintStart_toStartOf="@+id/ResultImageView"
         app:layout_constraintTop_toBottomOf="@+id/ResultImageView" />
