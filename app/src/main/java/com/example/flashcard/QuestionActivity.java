@@ -56,6 +56,15 @@ public class QuestionActivity extends BaseActivity {
             imageQuestion.setImageResource(R.drawable.not_found);
         }
 
+        imageQuestion.setOnClickListener(v -> {
+            // Rien faire si l'image est celle par défaut
+            if (question.id == 0) {
+                return;
+            }
+            // Affiche le dialog de zoom
+            showZoomDialog(question.id);
+        });
+
         for(int i = 0; i < answersList.size(); i++){
             final int j = i;
 
@@ -81,5 +90,28 @@ public class QuestionActivity extends BaseActivity {
                 finish();
             });
         }
+    }
+
+    public void showZoomDialog(int imageResId) {
+        // Créer Dialog
+        final android.app.Dialog zoomDialog = new android.app.Dialog(this);
+
+        // Défini le layout
+        zoomDialog.setContentView(R.layout.dialog_zoom_image);
+
+        // Rend la fenêtre du dialog transparente pour voir le fond du layout
+        if (zoomDialog.getWindow() != null) {
+            zoomDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+
+        // Récupère l'ImageView à l'intérieur du dialog
+        ImageView zoomedImageView = zoomDialog.findViewById(R.id.zoomedImageView);
+        zoomedImageView.setImageResource(imageResId);
+
+        // Ferme le dialog si utilisateur clique sur l'image zoomée
+        zoomedImageView.setOnClickListener(v -> zoomDialog.dismiss());
+
+        // Affiche le dialog
+        zoomDialog.show();
     }
 }
