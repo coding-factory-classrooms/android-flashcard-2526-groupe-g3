@@ -95,7 +95,7 @@
         },
         {
           "image_id": "question18",
-          "answers": ["Lucas Hauchard", "Antoine Daniel", "Squeezie (vrai nom Lucas Hauchard)", "McFly (David Coscas)", "Cyprien Iov"],
+          "answers": ["Lucas Hauchard", "Antoine Griezmann", "Ansel Elgort", "Louis Hofmann", "Thomas Brodie-Sangster"],
           "correct": 0
         },
         {
@@ -185,7 +185,7 @@
         },
         {
           "image_id": "question34",
-          "answers": ["Shou Zi Chew", "Sundar Pichai", "Satya Nadella", "Pichai Sundararajan (fake-nom)", "Lei Jun"],
+          "answers": ["Shou Zi Chew", "Sundar Pichai", "Satya Nadella", "Pichai Sundararajan", "Lei Jun"],
           "correct": 0
         },
         {
@@ -200,7 +200,7 @@
         },
         {
           "image_id": "question37",
-          "answers": ["Olivier de chez Carglass", "Michel de Feu Vert", "Pierre de chez Norauto", "Jacques de chez Midas"],
+          "answers": ["Olivier de chez Carglass", "Franck Leboeuf", "Stéphane Plaza", "Laurent Ournac", "Philippe Etchebest"],
           "correct": 0
         },
         {
@@ -210,7 +210,7 @@
         },
         {
           "image_id": "question39",
-          "answers": ["Mia Khalifa", "Bella Thorne", "Kat Dennings", "Emily Ratajkowski", "Adriana Chechik (inventée si besoin)"],
+          "answers": ["Mia Khalifa", "Bella Thorne", "Kat Dennings", "Emily Ratajkowski", "Adriana Chechik"],
           "correct": 0
         },
         {
