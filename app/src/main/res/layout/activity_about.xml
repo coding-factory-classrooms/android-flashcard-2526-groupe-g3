@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    tools:context=".AboutActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="12dp">
 
     <ImageView
         android:id="@+id/HomeAboutImageView"
@@ -23,21 +25,99 @@
         android:layout_height="wrap_content"
         android:text="Sosie Card"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/versionTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HomeAboutImageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/versionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Version 1.0"
-        android:textSize="34sp"
+        android:text="Version"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/groupeTextView"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/devTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Developed by :"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/groupeTextView"
+        app:layout_constraintEnd_toEndOf="@+id/NameTextView"
+        app:layout_constraintStart_toStartOf="@+id/NameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/NameTextView"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/axelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Axel"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/estelleTextView"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="@+id/estelleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/estelleTextView"
+        app:layout_constraintVertical_bias="0.22" />
+
+    <TextView
+        android:id="@+id/ludwigTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ludwig"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <TextView
+        android:id="@+id/shadoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shado"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ludwigTextView"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/ludwigTextView"
+        app:layout_constraintTop_toBottomOf="@+id/ludwigTextView"
+        app:layout_constraintVertical_bias="0.22" />
+
+    <TextView
+        android:id="@+id/estelleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estelle"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <TextView
+        android:id="@+id/groupeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Groupe n°3"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/devTextView"
+        app:layout_constraintStart_toStartOf="@+id/devTextView"
+        app:layout_constraintTop_toBottomOf="@+id/NameTextView"
+        app:layout_constraintVertical_bias="0.35" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
