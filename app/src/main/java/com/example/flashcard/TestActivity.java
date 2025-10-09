@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.Instant;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class TestActivity extends BaseActivity {
     private final List<Difficulty> difficultiesList = new ArrayList<>();
     private final Map<String, Integer> imageMap = new HashMap<>();
     private int correctAnswerCount;
+    long startTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class TestActivity extends BaseActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        startTime = System.currentTimeMillis() / 10;
 
         linkButton(R.id.HomeTestImageView, MainActivity.class);
 
@@ -169,6 +173,7 @@ public class TestActivity extends BaseActivity {
             Toast.makeText(this, "Mauvaise réponse", Toast.LENGTH_SHORT).show();
         }
 
+        //move to next question if it exists, else send info to result and end activity
         currentQuestion++;
         if (currentQuestion < difficultiesList.get(currentDifficulty).questions.size()) {
             showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
@@ -177,6 +182,8 @@ public class TestActivity extends BaseActivity {
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
             intent.putExtra("difficulty", currentDifficulty);
+            long testTime = (System.currentTimeMillis() / 10) - startTime;
+            intent.putExtra("testTime", testTime);
 
             startActivity(intent);
             finish();

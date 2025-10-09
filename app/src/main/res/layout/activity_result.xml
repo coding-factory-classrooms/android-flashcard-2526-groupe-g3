@@ -67,24 +67,35 @@
         android:id="@+id/ResultPercentTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:text="75%"
         android:textAlignment="center"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/QuestionButton2"
-        app:layout_constraintEnd_toEndOf="@+id/ResultImageView"
-        app:layout_constraintStart_toStartOf="@+id/ResultImageView"
+        app:layout_constraintEnd_toEndOf="@+id/ResultNumberTextView"
+        app:layout_constraintStart_toStartOf="@+id/ResultNumberTextView"
         app:layout_constraintTop_toBottomOf="@+id/ResultNumberTextView" />
 
     <TextView
-        android:id="@+id/ResultNumberTextView"
+        android:id="@+id/TimeNumberTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:layout_marginTop="48dp"
-        android:text="0%"
+        android:layout_margin="20dp"
+        android:text="0s"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="@+id/ResultImageView"
         app:layout_constraintStart_toStartOf="@+id/ResultImageView"
         app:layout_constraintTop_toBottomOf="@+id/ResultImageView" />
+
+    <TextView
+        android:id="@+id/ResultNumberTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="0%"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="@+id/TimeNumberTextView"
+        app:layout_constraintStart_toStartOf="@+id/TimeNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TimeNumberTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

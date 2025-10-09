@@ -26,6 +26,5 @@ public class DifficultyActivity extends BaseActivity {
         linkButtonWithDifficulty(R.id.MediumImageView, TestActivity.class, 1);
         linkButtonWithDifficulty(R.id.HardImageView, TestActivity.class, 2);
         linkButtonWithDifficulty(R.id.HardcoreImageView, TestActivity.class, 3);
-
     }
 }
