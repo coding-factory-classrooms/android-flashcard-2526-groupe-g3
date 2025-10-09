@@ -5,69 +5,87 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/WelcomeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/welcome_image" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/StartButton"
-        android:layout_width="251dp"
-        android:layout_height="108dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="313dp"
+        android:layout_height="124dp"
+        android:background="@drawable/main_button_png"
+        android:backgroundTint="@null"
         android:fontFamily="monospace"
         android:text="START"
+        android:textColor="#FBFBFB"
         android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TimeAttackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconeImageView" />
+
+    <ImageView
+        android:id="@+id/iconeImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/QuestionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_png"
         android:text="Questions"
-        app:layout_constraintBottom_toBottomOf="@id/WelcomeButton"
-        app:layout_constraintEnd_toStartOf="@+id/AboutButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/StatsButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TimeAttackButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/AboutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_png"
         android:text="A propos"
-        app:layout_constraintBottom_toBottomOf="@+id/QuestionButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/QuestionButton" />
-
-    <Button
-        android:id="@+id/TimeAttackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mode Time Attack"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/StatsButton"
+        app:layout_constraintTop_toBottomOf="@+id/TimeAttackButton" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/TimeAttackButton"
+        android:layout_width="223dp"
+        android:layout_height="74dp"
+        android:background="@drawable/main_button_png"
+        android:text="Mode Time Attack"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/StatsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StartButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/StatsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_margin="10dp"
+        android:background="@drawable/button_png"
         android:text="Stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/WelcomeButton" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AboutButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/QuestionButton"
+        app:layout_constraintTop_toBottomOf="@+id/TimeAttackButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

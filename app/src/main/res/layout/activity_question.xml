@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".QuestionActivity">
 
     <ImageView
@@ -16,50 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/people_question_image" />
-
-    <Button
-        android:id="@+id/ReponseAButton2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse A"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseBButton2"
-        app:layout_constraintEnd_toEndOf="@+id/PeopleImageView2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/PeopleImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView2" />
-
-    <Button
-        android:id="@+id/ReponseBButton2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse B"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseCButton2"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseAButton2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseAButton2"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseAButton2" />
-
-    <Button
-        android:id="@+id/ReponseCButton2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse C"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseDButton2"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseBButton2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseBButton2"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseBButton2" />
-
-    <Button
-        android:id="@+id/ReponseDButton2"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse D"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseCButton2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseCButton2"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseCButton2" />
 
     <ImageView
         android:id="@+id/HomeQuestionImageView"

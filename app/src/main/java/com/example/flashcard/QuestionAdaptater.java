@@ -42,6 +42,7 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
         //Create the line of the list of question
         Question question = questions.get(position);
         holder.questionImageView.setImageResource(question.id);
+        holder.questionImageView.bringToFront();
 
         //Next line add the Question to the function LinkData
         holder.linkData(question);
