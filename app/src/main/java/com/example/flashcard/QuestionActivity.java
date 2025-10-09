@@ -24,7 +24,6 @@ public class QuestionActivity extends BaseActivity {
     ImageView imageQuestion;
     List<String> answersList;
     Toast toast;
-    Spinner answersContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +68,7 @@ public class QuestionActivity extends BaseActivity {
             final int originalIndex = answerIndexes.get(i);
 
             // Create a button with the response and add it to the view
-            Button answerButton = new Button(this);
-            answerButton.setText(question.answers.get(originalIndex));
-            answersLayout.addView(answerButton);
-
-            //Take the button to say it's the good or the wrong
-            answerButton.setOnClickListener( view ->{
-
+            addButton(answersLayout, question.answers.get(originalIndex), () -> {
                 //Add a different toast if it's the good response or the wrong
                 if(originalIndex != question.correct){
                     toast = Toast.makeText(this, "Mauvaise réponse, la bonne réponse " +
@@ -89,6 +82,7 @@ public class QuestionActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             });
+
         }
     }
 }

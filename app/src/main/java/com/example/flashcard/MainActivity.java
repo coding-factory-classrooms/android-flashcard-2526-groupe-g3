@@ -7,6 +7,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends BaseActivity {
 
     public static final String TAG = "MainActivity";
@@ -23,7 +26,15 @@ public class MainActivity extends BaseActivity {
         });
 
         linkButton(R.id.StartButton, DifficultyActivity.class);
-        linkButton(R.id.QuestionButton, ListQuestionActivity.class);
         linkButton(R.id.AboutButton, AboutActivity.class);
+
+        List<Integer> difficultyList = new ArrayList<>();
+        for(int i = 0; i<4; i++){
+            difficultyList.add(i);
+        }
+
+        findViewById(R.id.QuestionButton).setOnClickListener(view ->{
+            onButtonShowPopupWindowClick(view, null, difficultyList, -1);
+        });
     }
 }

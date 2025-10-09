@@ -18,11 +18,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListQuestionActivity extends BaseActivity{
 
-    public final ArrayList<Question> questionsList = new ArrayList<>();
+    public ArrayList<Question> questionsList = new ArrayList<>();
+    public ArrayList<Question> tempQuestionsList = new ArrayList<>();
+    private final List<Difficulty> difficultiesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,17 @@ public class ListQuestionActivity extends BaseActivity{
 
         linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
 
+        Intent srcintent = getIntent();
 
-        String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
-        parseJsonData(json);
+        if(srcintent.getParcelableArrayListExtra("listQuestion") == null ) {
+            String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
+            parseJsonData(json);
+            List<Question> questions = difficultiesList.get(srcintent.getIntExtra("difficulty", 0)).questions;
+            questionsList = new ArrayList<>(questions);
+        }
+        else{
+            questionsList = srcintent.getParcelableArrayListExtra("listQuestion");
+        }
 
         // Link the adaptater and the recycler
         QuestionAdaptater adaptater = new QuestionAdaptater(questionsList);
@@ -58,8 +69,10 @@ public class ListQuestionActivity extends BaseActivity{
 
             for (int difficultyIndex = 0; difficultyIndex < difficultyArray.length(); difficultyIndex++) {
                 JSONObject difficultyJson = difficultyArray.getJSONObject(difficultyIndex);
+                String difficultyLevel = difficultyJson.getString("level");
 
                 JSONArray questionArray = difficultyJson.getJSONArray("questions");
+                List<Question> questionList = new ArrayList<>();
 
                 for (int questionIndex = 0; questionIndex < questionArray.length(); questionIndex++) {
                     JSONObject questionJson = questionArray.getJSONObject(questionIndex);
@@ -74,8 +87,10 @@ public class ListQuestionActivity extends BaseActivity{
 
                     int correctAnswerIndex = questionJson.getInt("correct");
                     int id = getResources().getIdentifier(imageName,"drawable", getPackageName());
-                    questionsList.add(new Question(imageName, answerList, correctAnswerIndex, id));
+                    questionList.add(new Question(imageName, answerList, correctAnswerIndex, id));
                 }
+
+                difficultiesList.add(new Difficulty(difficultyLevel, questionList));
             }
 
         } catch (JSONException e) {

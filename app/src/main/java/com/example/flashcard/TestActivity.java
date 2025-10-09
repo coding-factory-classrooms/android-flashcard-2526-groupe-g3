@@ -32,6 +32,7 @@ public class TestActivity extends BaseActivity {
     private LinearLayout answersContainer;
     private final List<Difficulty> difficultiesList = new ArrayList<>();
     private final Map<String, Integer> imageMap = new HashMap<>();
+    private final ArrayList<Question> failedQuestion = new ArrayList<>();
     private int correctAnswerCount;
 
     @Override
@@ -166,6 +167,7 @@ public class TestActivity extends BaseActivity {
             correctAnswerCount++;
             Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT).show();
         } else {
+            failedQuestion.add(question);
             Toast.makeText(this, "Mauvaise réponse", Toast.LENGTH_SHORT).show();
         }
 
@@ -177,6 +179,7 @@ public class TestActivity extends BaseActivity {
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
             intent.putExtra("difficulty", currentDifficulty);
+            intent.putParcelableArrayListExtra("failedQuestion", failedQuestion);
 
             startActivity(intent);
             finish();
