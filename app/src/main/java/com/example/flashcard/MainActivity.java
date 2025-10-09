@@ -25,5 +25,7 @@ public class MainActivity extends BaseActivity {
         linkButton(R.id.StartButton, DifficultyActivity.class);
         linkButton(R.id.QuestionButton, ListQuestionActivity.class);
         linkButton(R.id.AboutButton, AboutActivity.class);
+        linkButton(R.id.StatsButton, StatsActivity.class);
+
     }
 }

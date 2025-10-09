@@ -1,7 +1,9 @@
 package com.example.flashcard;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Locale;
 
 public class ResultActivity extends BaseActivity {
@@ -29,7 +36,7 @@ public class ResultActivity extends BaseActivity {
         ImageView shareImageView = findViewById(R.id.ShareImageView);
 
 
-        //get intents here, conversion to corresponding name for difficulty
+        //get intents, conversion to corresponding name for difficulty
         Intent intent = getIntent();
         int correctAnswerCount = intent.getIntExtra("correctAnswerCount", 0);
         int totalQuestions = intent.getIntExtra("totalQuestions", 0);
@@ -74,6 +81,10 @@ public class ResultActivity extends BaseActivity {
         linkButton(R.id.QuestionButton2, ListQuestionActivity.class);
         linkButton(R.id.BackButton, DifficultyActivity.class);
 
+        updateStats((int)testTime, totalQuestions, correctAnswerCount);
+
+
+        //write share text
         String shareText = "YOOO JAI FAIT LE TEST SOSIE EN " + difficultyName + " EN " + testTimeText + " SECONDES ET JAI EU " + correctResultNumber;
 
         shareImageView.setOnClickListener(v -> {
@@ -86,5 +97,17 @@ public class ResultActivity extends BaseActivity {
         });
 
 
+    }
+
+    private void updateStats(int quizTime, int answers, int good_answers) {
+        SharedPreferences prefs = getSharedPreferences("Stats", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+
+        editor.putInt("quiz_amount", prefs.getInt("quiz_amount", 0) + 1);
+        editor.putInt("total_quiz_time", prefs.getInt("total_quiz_time", 0) + quizTime);
+        editor.putInt("total_answers", prefs.getInt("total_answers", 0) + answers);
+        editor.putInt("good_answers", prefs.getInt("good_answers", 0) + good_answers);
+        editor.apply();
     }
 }
