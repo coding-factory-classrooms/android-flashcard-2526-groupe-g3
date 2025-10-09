@@ -22,8 +22,9 @@ public class MainActivity extends BaseActivity {
             return insets;
         });
 
-        linkButton(R.id.StartButton, DifficultyActivity.class);
-        linkButton(R.id.QuestionButton, ListQuestionActivity.class);
-        linkButton(R.id.AboutButton, AboutActivity.class);
+        linkButton(R.id.StartButton, DifficultyActivity.class, false);
+        linkButton(R.id.TimeAttackButton, DifficultyActivity.class, true);
+        linkButton(R.id.QuestionButton, ListQuestionActivity.class, false);
+        linkButton(R.id.AboutButton, AboutActivity.class, false);
     }
 }

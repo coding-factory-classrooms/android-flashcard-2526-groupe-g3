@@ -21,11 +21,24 @@ public class DifficultyActivity extends BaseActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        linkButton(R.id.HomeDifficultyImageView, MainActivity.class);
-        linkButtonWithDifficulty(R.id.EasyImageView, TestActivity.class, 0);
-        linkButtonWithDifficulty(R.id.MediumImageView, TestActivity.class, 1);
-        linkButtonWithDifficulty(R.id.HardImageView, TestActivity.class, 2);
-        linkButtonWithDifficulty(R.id.HardcoreImageView, TestActivity.class, 3);
 
+        // Récupère le flag "isTimeAttack" passé depuis l'activité précédente et indique avec le booléen
+        // si on lance en timeAttack ou non
+        boolean isTimeAttack = getIntent().getBooleanExtra("isTimeAttack", false);
+
+        // Tableau des IDs des boutons correspondant aux différentes difficultés (c'est plus conventionnel)
+        int[] difficultyButtons = {
+                R.id.EasyImageView,
+                R.id.MediumImageView,
+                R.id.HardImageView,
+                R.id.HardcoreImageView
+        };
+
+        // Boucle sur chaque bouton pour lui associer un clic (méthode trouvé sur internet)
+        for (int i = 0; i < difficultyButtons.length; i++) {
+            linkButtonWithDifficulty(difficultyButtons[i], TestActivity.class, i, isTimeAttack);
+        }
+
+        linkButton(R.id.HomeDifficultyImageView, MainActivity.class, false);
     }
 }

@@ -35,7 +35,7 @@ public class ListQuestionActivity extends BaseActivity{
             return insets;
         });
 
-        linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
+        linkButton(R.id.HomeListQuestionImageView, MainActivity.class, false);
 
 
         String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
