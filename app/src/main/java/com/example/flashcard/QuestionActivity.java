@@ -66,24 +66,23 @@ public class QuestionActivity extends BaseActivity {
 
         Collections.shuffle(answerIndexes);
         for(int i = 0; i < answersList.size(); i++){
-            final int j = i;
             final int originalIndex = answerIndexes.get(i);
 
             // Create a button with the response and add it to the view
             Button answerButton = new Button(this);
-            answerButton.setText(question.answers.get(originalIndex ));
+            answerButton.setText(question.answers.get(originalIndex));
             answersLayout.addView(answerButton);
 
             //Take the button to say it's the good or the wrong
             answerButton.setOnClickListener( view ->{
 
                 //Add a different toast if it's the good response or the wrong
-                if(j != question.correct){
+                if(originalIndex != question.correct){
                     toast = Toast.makeText(this, "Mauvaise réponse, la bonne réponse " +
-                            "était : "+question.answers.get(question.correct)+".", Toast.LENGTH_LONG);
+                            "était : "+question.answers.get(question.correct)+".", Toast.LENGTH_SHORT);
                 }
                 else{
-                    toast = Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_SHORT);
                 }
 
                 toast.show();
