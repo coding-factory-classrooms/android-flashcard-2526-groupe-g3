@@ -176,6 +176,8 @@ public class TestActivity extends BaseActivity {
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
+            intent.putExtra("difficulty", currentDifficulty);
+
             startActivity(intent);
             finish();
         }
