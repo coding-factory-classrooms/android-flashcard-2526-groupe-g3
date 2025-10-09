@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,8 +30,9 @@ public class TestActivity extends BaseActivity {
     private int currentQuestion = 0;
     private ImageView questionImage;
     private LinearLayout answersContainer;
-    public final List<Difficulty> difficultiesList = new ArrayList<>();
+    private final List<Difficulty> difficultiesList = new ArrayList<>();
     private final Map<String, Integer> imageMap = new HashMap<>();
+    private int correctAnswerCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,6 @@ public class TestActivity extends BaseActivity {
         linkButton(R.id.HomeTestImageView, MainActivity.class);
 
         currentDifficulty = getIntent().getIntExtra("difficulty_index", 0);
-
         questionImage = findViewById(R.id.PeopleImageView);
         answersContainer = findViewById(R.id.answersContainer);
 
@@ -132,6 +133,10 @@ public class TestActivity extends BaseActivity {
 
         // Creer une liste des indexes des réponses
         List<Integer> answerIndexes = new ArrayList<>();
+        TextView currentQuestionTextView = findViewById(R.id.CurrentQuestionTextView);
+        String currentQuestionText = ("Question " + (currentQuestion+1) + " / " + difficultiesList.get(currentDifficulty).questions.toArray().length);
+        currentQuestionTextView.setText(currentQuestionText);
+
         for (int i = 0; i < question.answers.size(); i++) {
             answerIndexes.add(i);
         }
@@ -158,6 +163,7 @@ public class TestActivity extends BaseActivity {
         Question question = difficultiesList.get(currentDifficulty).questions.get(currentQuestion);
 
         if (selectedIndex == question.correct) {
+            correctAnswerCount++;
             Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Mauvaise réponse", Toast.LENGTH_SHORT).show();
@@ -168,6 +174,8 @@ public class TestActivity extends BaseActivity {
             showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
         } else {
             Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra("correctAnswerCount", correctAnswerCount);
+            intent.putExtra("totalQuestions", currentQuestion);
             startActivity(intent);
             finish();
         }
