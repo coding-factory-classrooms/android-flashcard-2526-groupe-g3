@@ -92,7 +92,7 @@ public class QuestionActivity extends BaseActivity {
         }
     }
 
-    private void showZoomDialog(int imageResId) {
+    public void showZoomDialog(int imageResId) {
         // Créer Dialog
         final android.app.Dialog zoomDialog = new android.app.Dialog(this);
 
