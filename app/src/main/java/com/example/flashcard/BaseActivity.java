@@ -2,6 +2,7 @@ package com.example.flashcard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,38 +103,55 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         if(questions != null){
+            AppCompatButton button = new AppCompatButton(this);
             addButton(popUpLayout, "Questions ratés", () -> {
                 intent.putParcelableArrayListExtra("listQuestion", questions);
                 startActivity(intent);
-            });
+            }, button);
+            button.setBackgroundColor(Color.TRANSPARENT);
+            button.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    150
+            ));
         }
         if(difficultyList != null) {
             for(int i = 0; i < difficultyList.size(); i++){
                 final int j = i;
+                AppCompatButton button = new AppCompatButton(this);
                 addButton(popUpLayout, difficultyName.get(i), () -> {
                     intent.putExtra("difficulty", j);
                     startActivity(intent);
-                });
-
+                }, button);
+                button.setBackgroundColor(Color.TRANSPARENT);
+                button.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        150
+                ));
             }
         }
         if(difficulty != -1) {
+            AppCompatButton button = new AppCompatButton(this);
             addButton(popUpLayout, difficultyName.get(difficulty), () -> {
                 intent.putExtra("difficulty", difficulty);
                 startActivity(intent);
-            });
+            }, button);
+            button.setBackgroundColor(Color.TRANSPARENT);
+            button.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    150
+            ));
         }
     }
 
     //Create a function where you can put things on
-    public void addButton(LinearLayout parent, String text, Runnable onClick) {
+    public AppCompatButton addButton(LinearLayout parent, String text, Runnable onClick, AppCompatButton button ) {
         // Create a button with the response and add it to the view
-        Button button = new Button(this);
         button.setText(text);
         parent.addView(button);
 
         //When it's click it runs the code you put in
         button.setOnClickListener(v -> onClick.run());
+        return button;
     }
 }
 
