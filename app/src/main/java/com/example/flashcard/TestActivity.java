@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +54,11 @@ public class TestActivity extends BaseActivity {
 
         String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
         parseJsonData(json);
+
+        // Recuperation de la liste de questions de la difficulté actuelle
+        List<Question> questionsToShuffle = difficultiesList.get(currentDifficulty).questions;
+        // On melange la liste
+        Collections.shuffle(questionsToShuffle);
 
         showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
 
@@ -124,15 +130,25 @@ public class TestActivity extends BaseActivity {
 
         answersContainer.removeAllViews();
 
+        // Creer une liste des indexes des réponses
+        List<Integer> answerIndexes = new ArrayList<>();
         for (int i = 0; i < question.answers.size(); i++) {
-            final int index = i;
+            answerIndexes.add(i);
+        }
+
+        // Mélange la liste
+        Collections.shuffle(answerIndexes);
+
+        for (int i = 0; i < answerIndexes.size(); i++) {
+            // Index original
+            final int originalIndex = answerIndexes.get(i);
             Button answerButton = new Button(this);
-            answerButton.setText(question.answers.get(i));
+            answerButton.setText(question.answers.get(originalIndex));
             answerButton.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
-            answerButton.setOnClickListener(v -> checkAnswer(index));
+            answerButton.setOnClickListener(v -> checkAnswer(originalIndex));
             answersContainer.addView(answerButton);
         }
     }
