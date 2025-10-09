@@ -1,6 +1,7 @@
 package com.example.flashcard;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionActivity extends BaseActivity {
@@ -56,12 +59,19 @@ public class QuestionActivity extends BaseActivity {
             imageQuestion.setImageResource(R.drawable.not_found);
         }
 
+        List<Integer> answerIndexes = new ArrayList<>();
+        for (int i = 0; i < question.answers.size(); i++) {
+            answerIndexes.add(i);
+        }
+
+        Collections.shuffle(answerIndexes);
         for(int i = 0; i < answersList.size(); i++){
             final int j = i;
+            final int originalIndex = answerIndexes.get(i);
 
             // Create a button with the response and add it to the view
             Button answerButton = new Button(this);
-            answerButton.setText(question.answers.get(i));
+            answerButton.setText(question.answers.get(originalIndex ));
             answersLayout.addView(answerButton);
 
             //Take the button to say it's the good or the wrong
