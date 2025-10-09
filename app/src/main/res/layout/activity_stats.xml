@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/HomeStatsImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_button" />
+
+    <TextView
+        android:id="@+id/TotalQuizTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="150dp"
+        android:text="Total Quizzes Played : "
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TotalCorrectTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Total Good Answers : "
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/TotalQuizTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TotalQuizTextView" />
+
+    <TextView
+        android:id="@+id/TotalPlaytimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Total Playtime : "
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/TotalCorrectTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TotalCorrectTextView" />
+
+    <TextView
+        android:id="@+id/TotalAnsweredTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Total Questions Answered : "
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/TotalPlaytimeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TotalPlaytimeTextView" />
+
+    <TextView
+        android:id="@+id/AverageTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Average Quiz Time : "
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/TotalAnsweredTextView"
+        app:layout_constraintTop_toBottomOf="@+id/TotalAnsweredTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

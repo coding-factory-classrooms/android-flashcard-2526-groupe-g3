@@ -21,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.Instant;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class TestActivity extends BaseActivity {
     private final Map<String, Integer> imageMap = new HashMap<>();
     // Compteur pour compter les bonnes réponses
     private int correctAnswerCount;
+    long startTime;
     // Booléen pour activer le mode TimeAttack
     private boolean isTimeAttack = false;
     // variable pour créer le timer pour le TimeAttack
@@ -61,6 +63,9 @@ public class TestActivity extends BaseActivity {
             return insets;
         });
 
+        startTime = System.currentTimeMillis() / 10;
+
+        linkButton(R.id.HomeTestImageView, MainActivity.class);
         linkButton(R.id.HomeTestImageView, MainActivity.class, false);
 
         // On récupère la dificulté avec l'index transmis par DifficultyActivity
@@ -245,6 +250,7 @@ public class TestActivity extends BaseActivity {
     // fonction pour le fonctionnement du timer du TimeAttack
     private void startTimer() {
 
+
         if (!isTimeAttack) return;
 
         // Durée des timers : facile, moyen, difficle, hardcore
@@ -290,6 +296,8 @@ public class TestActivity extends BaseActivity {
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
             intent.putExtra("difficulty", currentDifficulty);
+            long testTime = (System.currentTimeMillis() / 10) - startTime;
+            intent.putExtra("testTime", testTime);
 
             startActivity(intent);
             finish();
