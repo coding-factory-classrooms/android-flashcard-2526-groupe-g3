@@ -5,13 +5,53 @@
       "questions": [
         {
           "image_id": "question1",
-          "answers": ["Paris", "Londres", "Berlin", "Madrid"],
+          "answers": ["Johnny Hallyday", "Kurt Russell", "Mel Gibson", "Patrick Swayze", "Thomas Gibson"],
           "correct": 0
         },
         {
           "image_id": "question2",
-          "answers": ["3", "4", "5", "6"],
-          "correct": 1
+          "answers": ["Michael Jackson", "The Weeknd", "La Toya Jackson", "Prince", "Gackt (chanteur japonais)"],
+          "correct": 0
+        },
+        {
+          "image_id": "question3",
+          "answers": ["Natalie Portman", "Keira Knightley", "Daisy Ridley", "Lily Collins", "Alison Brie"],
+          "correct": 0
+        },
+        {
+          "image_id": "question4",
+          "answers": ["Cara Delevingne", "Emma Mackey", "Margot Robbie", "Anya Taylor-Joy", "Clara Luciani"],
+          "correct": 0
+        },
+        {
+          "image_id": "question5",
+          "answers": ["Angelina Jolie", "Megan Fox", "Aishwarya Rai", "Irina Shayk", "Mila Kunis"],
+          "correct": 0
+        },
+        {
+          "image_id": "question6",
+          "answers": ["Benedict Cumberbatch", "Neil Patrick Harris", "Adrien Brody", "Tilda Swinton (ressemblance étrange)", "Tom Hiddleston"],
+          "correct": 0
+        },
+        {
+          "image_id": "question7",
+          "answers": ["Megan Fox", "Adriana Lima", "Alexandra Daddario", "Emilia Clarke", "Eva Green"],
+          "correct": 0
+        },
+        {
+          "image_id": "question8",
+          "answers": ["Katy Perry", "Zooey Deschanel", "Lana Del Rey", "Kacey Musgraves", "Liz Gillies"],
+          "correct": 0
+        },
+        {
+          "image_id": "question9",
+          "answers": ["François Hollande", "Gérard Jugnot", "Michel Cymes", "Jean-Pierre Bacri", "Paul Préboist"],
+          "correct": 0
+        },
+        {
+          "image_id": "question10",
+          "answers": ["Alan Rickman", "Jeremy Irons", "Gary Oldman", "Charles Dance", "Hugh Laurie"],
+          "correct": 0
         }
       ]
     },
@@ -19,9 +59,54 @@
       "level": "Moyen",
       "questions": [
         {
-          "image_id": "question3",
-          "answers": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
-          "correct": 1
+          "image_id": "question11",
+          "answers": ["Karim Benzema", "Noah Centineo", "Drake", "Marouane Fellaini", "Adam Driver"],
+          "correct": 0
+        },
+        {
+          "image_id": "question12",
+          "answers": ["Brad Pitt", "Charlie Hunnam", "Travis Fimmel", "Garrett Hedlund", "Alexander Skarsgård"],
+          "correct": 0
+        },
+        {
+          "image_id": "question13",
+          "answers": ["Bruce Willis", "Jason Statham", "Corey Stoll", "Mark Strong", "Tom Hardy (rasé)"],
+          "correct": 0
+        },
+        {
+          "image_id": "question14",
+          "answers": ["Gad Elmaleh", "Rami Malek", "Sacha Baron Cohen", "Adrien Brody", "Ben Whishaw"],
+          "correct": 0
+        },
+        {
+          "image_id": "question15",
+          "answers": ["George Clooney", "Pierce Brosnan", "Jeffrey Dean Morgan", "Jon Hamm", "Dermot Mulroney"],
+          "correct": 0
+        },
+        {
+          "image_id": "question16",
+          "answers": ["Johnny Depp", "Adam Levine", "Ezra Miller", "Jared Leto", "Cillian Murphy"],
+          "correct": 0
+        },
+        {
+          "image_id": "question17",
+          "answers": ["Kim Jong-un", "Randall Park", "Daniel Dae Kim", "Choi Woo-shik", "Ken Jeong"],
+          "correct": 0
+        },
+        {
+          "image_id": "question18",
+          "answers": ["Lucas Hauchard", "Antoine Daniel", "Squeezie (vrai nom Lucas Hauchard)", "McFly (David Coscas)", "Cyprien Iov"],
+          "correct": 0
+        },
+        {
+          "image_id": "question19",
+          "answers": ["Keanu Reeves", "Adam Driver", "Johnny Depp", "Kit Harington", "Reeves Gabrels"],
+          "correct": 0
+        },
+        {
+          "image_id": "question20",
+          "answers": ["Vanessa Paradis", "Lily-Rose Depp", "Marion Cotillard", "Clémence Poésy", "Eva Green"],
+          "correct": 0
         }
       ]
     },
@@ -29,9 +114,109 @@
       "level": "Difficile",
       "questions": [
         {
-          "image_id": "question4",
-          "answers": ["Van Gogh", "Da Vinci", "Picasso", "Monet"],
-          "correct": 3
+          "image_id": "question21",
+          "answers": ["Novak Djokovic", "Adrien Brody", "Cillian Murphy", "Milo Ventimiglia", "James Franco"],
+          "correct": 0
+        },
+        {
+          "image_id": "question22",
+          "answers": ["Franck Dubosc", "Laurent Ournac", "Christian Clavier", "Patrick Bruel", "Philippe Bas"],
+          "correct": 0
+        },
+        {
+          "image_id": "question23",
+          "answers": ["Justin Bieber", "Machine Gun Kelly", "Aaron Carter", "Lucky Blue Smith", "Cameron Dallas"],
+          "correct": 0
+        },
+        {
+          "image_id": "question24",
+          "answers": ["Ken", "Ryan Gosling", "Chris Hemsworth", "Armie Hammer", "Lucas Till"],
+          "correct": 0
+        },
+        {
+          "image_id": "question25",
+          "answers": ["Kev Adams", "Adam Levine", "Zac Efron", "Darren Criss", "Nick Jonas"],
+          "correct": 0
+        },
+        {
+          "image_id": "question26",
+          "answers": ["Pedro Pascal", "Oscar Isaac", "Antony Starr", "Robert Downey Jr.", "Mark Ruffalo"],
+          "correct": 0
+        },
+        {
+          "image_id": "question27",
+          "answers": ["Pierre Niney", "Timothée Chalamet", "Eddie Redmayne", "Andrew Garfield", "Ben Whishaw"],
+          "correct": 0
+        },
+        {
+          "image_id": "question28",
+          "answers": ["Nicolas Sarkozy", "Jean Dujardin", "Alain Delon", "Bertrand Delanoë", "Fabrice Luchini"],
+          "correct": 0
+        },
+        {
+          "image_id": "question29",
+          "answers": ["Vladimir Poutine", "Kevin Costner", "Bruce Willis", "Christoph Waltz", "Daniel Craig"],
+          "correct": 0
+        },
+        {
+          "image_id": "question30",
+          "answers": ["Bryan Cranston", "Liam Neeson", "Michael Keaton", "William H. Macy", "Gary Oldman"],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "level": "Hardcore",
+      "questions": [
+        {
+          "image_id": "question31",
+          "answers": ["George Lucas", "Ben Whishaw", "Sean Connery", "Alan Rickman", "Michael Gambon"],
+          "correct": 0
+        },
+        {
+          "image_id": "question32",
+          "answers": ["Jean-Paul Rouve", "Romain Duris", "Guillaume Canet", "François Cluzet", "Benoît Magimel"],
+          "correct": 0
+        },
+        {
+          "image_id": "question33",
+          "answers": ["Ada", "Eve", "Nora", "Lola", "Mia"],
+          "correct": 0
+        },
+        {
+          "image_id": "question34",
+          "answers": ["Shou Zi Chew", "Sundar Pichai", "Satya Nadella", "Pichai Sundararajan (fake-nom)", "Lei Jun"],
+          "correct": 0
+        },
+        {
+          "image_id": "question35",
+          "answers": ["Shailene Woodley", "Hailee Steinfeld", "Emma Stone", "Dakota Fanning", "Margot Robbie"],
+          "correct": 0
+        },
+        {
+          "image_id": "question36",
+          "answers": ["Kylian Mbappé", "Paul Pogba", "N’Golo Kanté", "Ousmane Dembélé", "Kingsley Coman"],
+          "correct": 0
+        },
+        {
+          "image_id": "question37",
+          "answers": ["Olivier de chez Carglass", "Michel de Feu Vert", "Pierre de chez Norauto", "Jacques de chez Midas"],
+          "correct": 0
+        },
+        {
+          "image_id": "question38",
+          "answers": ["Cristina Yang", "Miranda Bailey", "Callie Torres", "Lexie Grey", "Jo Wilson"],
+          "correct": 0
+        },
+        {
+          "image_id": "question39",
+          "answers": ["Mia Khalifa", "Bella Thorne", "Kat Dennings", "Emily Ratajkowski", "Adriana Chechik (inventée si besoin)"],
+          "correct": 0
+        },
+        {
+          "image_id": "question40",
+          "answers": ["Mac Lesggy", "Fred Courant", "Jamy Gourmaud", "Michel Chevalet", "Yves Coppens"],
+          "correct": 0
         }
       ]
     }
