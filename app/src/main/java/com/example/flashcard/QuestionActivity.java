@@ -38,7 +38,7 @@ public class QuestionActivity extends BaseActivity {
 
         //Create all the intent
         Intent srcIntent = getIntent();
-        Intent intent = new Intent(this, QuestionActivity.class);
+        Intent intent = new Intent(this, ListQuestionActivity.class);
 
         //Take the variable named question
         Question question =srcIntent.getParcelableExtra("Question");
@@ -49,10 +49,11 @@ public class QuestionActivity extends BaseActivity {
         answersList = question.answers;
 
         //If there's no image, put nothing
-        if (imageQuestion != null) {
+        Log.d("QuestionActivity", ""+question.id);
+        if (question.id != 0) {
             imageQuestion.setImageResource(question.id);
         } else {
-            imageQuestion.setImageResource(0);
+            imageQuestion.setImageResource(R.drawable.not_found);
         }
 
         for(int i = 0; i < answersList.size(); i++){
