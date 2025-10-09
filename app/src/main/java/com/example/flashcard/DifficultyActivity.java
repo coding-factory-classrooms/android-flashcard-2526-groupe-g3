@@ -34,9 +34,19 @@ public class DifficultyActivity extends BaseActivity {
                 R.id.HardcoreImageView
         };
 
+        // Les levels correspondant à chaque bouton
+        String[] levels = {"Facile", "Moyen", "Difficile", "Hardcore"};
+
+
         // Boucle sur chaque bouton pour lui associer un clic (méthode trouvé sur internet)
         for (int i = 0; i < difficultyButtons.length; i++) {
-            linkButtonWithDifficulty(difficultyButtons[i], TestActivity.class, i, isTimeAttack);
+            final int index = i;
+            findViewById(difficultyButtons[i]).setOnClickListener(v -> {
+                Intent intent = new Intent(this, TestActivity.class);
+                intent.putExtra("level", levels[index]); // level envoyé pour filtrer l'API
+                intent.putExtra("isTimeAttack", isTimeAttack);
+                startActivity(intent);
+            });
         }
 
         linkButton(R.id.HomeDifficultyImageView, MainActivity.class, false);

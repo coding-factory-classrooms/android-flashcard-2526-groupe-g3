@@ -47,17 +47,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    // Même fonction qu'au dessus mais on envoie aussi la difficulté, utile pour l'écran de sélection de difficulté
-    protected void linkButtonWithDifficulty(int buttonId, Class<?> activityClass, int difficultyIndex, boolean isTimeAttack) {
-        findViewById(buttonId).setOnClickListener(v -> {
-            // On crée l’intent avec les informations de difficulté et du mode TimeAttack
-            Intent intent = new Intent(this, activityClass);
-            intent.putExtra("difficulty_index", difficultyIndex);
-            intent.putExtra("isTimeAttack", isTimeAttack);
-            startActivity(intent);
-        });
-    }
-
     // Méthode par défaut appelée lors du clic sur une vue (si tag défini)
     @Override
     public void onClick(View v) {

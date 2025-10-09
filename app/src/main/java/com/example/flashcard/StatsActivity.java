@@ -41,12 +41,20 @@ public class StatsActivity extends BaseActivity {
         SharedPreferences prefs = getSharedPreferences("Stats", MODE_PRIVATE);
 
 
+        // Protection pour éviter la division par 0 et donc le crash
+        int quizAmount = prefs.getInt("quiz_amount", 0);
+        int totalQuizTime = prefs.getInt("total_quiz_time", 0);
+
+        String averageTime = quizAmount > 0
+                ? TimestampToString(totalQuizTime / quizAmount)
+                : "00:00:00";
+
         //showing texts
         totalQuizzesPlayedTextView.append(Integer.toString(prefs.getInt("quiz_amount", 0)));
         totalCorrectTextView.append(Integer.toString(prefs.getInt("good_answers", 0)));
         totalPlayTimeTextView.append(TimestampToString(prefs.getInt("total_quiz_time", 0)));
         totalAnsweredTextView.append(Integer.toString(prefs.getInt("total_answers", 0)));
-        averageTimeTextView.append(TimestampToString(prefs.getInt("total_quiz_time", 0) / prefs.getInt("quiz_amount", 0)));
+        averageTimeTextView.append(averageTime);
     }
 
     private String TimestampToString(int timestamp) {
