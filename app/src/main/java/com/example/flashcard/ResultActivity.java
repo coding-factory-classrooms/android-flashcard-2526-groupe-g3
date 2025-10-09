@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class ResultActivity extends BaseActivity {
@@ -78,10 +81,7 @@ public class ResultActivity extends BaseActivity {
         resultNumberText.setText(correctResultNumber);
 
         linkButton(R.id.HomeResultImageView, MainActivity.class, false);
-        linkButton(R.id.QuestionButton2, ListQuestionActivity.class, false);
         linkButton(R.id.BackButton, MainActivity.class, false);
-
-        updateStats((int)testTime, totalQuestions, correctAnswerCount);
 
 
         //write share text
@@ -96,6 +96,10 @@ public class ResultActivity extends BaseActivity {
             startActivity(Intent.createChooser(sharingIntent, "Share using"));
         });
 
+        findViewById(R.id.QuestionButton2).setOnClickListener(view ->{
+            ArrayList<Question> questions= intent.getParcelableArrayListExtra("failedQuestion");
+            onButtonShowPopupWindowClick(view,questions , null, difficulty);
+        });
 
     }
 

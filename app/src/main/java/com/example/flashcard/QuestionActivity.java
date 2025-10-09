@@ -1,6 +1,7 @@
 package com.example.flashcard;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionActivity extends BaseActivity {
@@ -21,7 +24,6 @@ public class QuestionActivity extends BaseActivity {
     ImageView imageQuestion;
     List<String> answersList;
     Toast toast;
-    Spinner answersContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,12 @@ public class QuestionActivity extends BaseActivity {
             imageQuestion.setImageResource(R.drawable.not_found);
         }
 
+        List<Integer> answerIndexes = new ArrayList<>();
+        for (int i = 0; i < question.answers.size(); i++) {
+            answerIndexes.add(i);
+        }
+
+        Collections.shuffle(answerIndexes);
         imageQuestion.setOnClickListener(v -> {
             // Rien faire si l'image est celle par défaut
             if (question.id == 0) {
@@ -66,29 +74,24 @@ public class QuestionActivity extends BaseActivity {
         });
 
         for(int i = 0; i < answersList.size(); i++){
-            final int j = i;
+            final int originalIndex = answerIndexes.get(i);
 
             // Create a button with the response and add it to the view
-            Button answerButton = new Button(this);
-            answerButton.setText(question.answers.get(i));
-            answersLayout.addView(answerButton);
-
-            //Take the button to say it's the good or the wrong
-            answerButton.setOnClickListener( view ->{
-
+            addButton(answersLayout, question.answers.get(originalIndex), () -> {
                 //Add a different toast if it's the good response or the wrong
-                if(j != question.correct){
+                if(originalIndex != question.correct){
                     toast = Toast.makeText(this, "Mauvaise réponse, la bonne réponse " +
-                            "était : "+question.answers.get(question.correct)+".", Toast.LENGTH_LONG);
+                            "était : "+question.answers.get(question.correct)+".", Toast.LENGTH_SHORT);
                 }
                 else{
-                    toast = Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(this, "Bonne réponse !", Toast.LENGTH_SHORT);
                 }
 
                 toast.show();
                 startActivity(intent);
                 finish();
             });
+
         }
     }
 

@@ -43,6 +43,7 @@ public class TestActivity extends BaseActivity {
     // Une Map pour associer les noms des images a leur ressources dans drawable
     private final Map<String, Integer> imageMap = new HashMap<>();
     // Compteur pour compter les bonnes réponses
+    private final ArrayList<Question> failedQuestion = new ArrayList<>();
     private int correctAnswerCount;
     long startTime;
     // Booléen pour activer le mode TimeAttack
@@ -100,12 +101,10 @@ public class TestActivity extends BaseActivity {
         // On melange la liste
         Collections.shuffle(questionsToShuffle);
 
-        // Fonction qui lance le quiz
         showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
 
     }
 
-    // Fonction qui parse le json (trouvé sur internet), c'est une méthode générique
     public void parseJsonData(String jsonData) {
         try {
             JSONObject rootObject = new JSONObject(jsonData);
@@ -240,6 +239,7 @@ public class TestActivity extends BaseActivity {
             correctAnswerCount++;
             Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT).show();
         } else {
+            failedQuestion.add(question);
             Toast.makeText(this, "Mauvaise réponse", Toast.LENGTH_SHORT).show();
         }
         nextQuestion();
@@ -294,6 +294,7 @@ public class TestActivity extends BaseActivity {
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
             intent.putExtra("difficulty", currentDifficulty);
+            intent.putParcelableArrayListExtra("failedQuestion", failedQuestion);
             long testTime = (System.currentTimeMillis() / 10) - startTime;
             intent.putExtra("testTime", testTime);
 
