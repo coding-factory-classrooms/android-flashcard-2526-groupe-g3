@@ -40,6 +40,15 @@ public class ListQuestionActivity extends BaseActivity{
 
         linkButton(R.id.HomeListQuestionImageView, MainActivity.class);
 
+        List<Integer> difficultyNameList = new ArrayList<>();
+        for(int i = 0; i<4; i++){
+            difficultyNameList.add(i);
+        }
+
+        findViewById(R.id.MenuImageView).setOnClickListener(view ->{
+            onButtonShowPopupWindowClick(view, null, difficultyNameList, -1);
+        });
+
         Intent srcintent = getIntent();
 
         if(srcintent.getParcelableArrayListExtra("listQuestion") == null ) {
