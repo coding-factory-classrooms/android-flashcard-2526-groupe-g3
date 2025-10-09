@@ -64,8 +64,6 @@ public class TestActivity extends BaseActivity {
         });
 
         startTime = System.currentTimeMillis() / 10;
-
-        linkButton(R.id.HomeTestImageView, MainActivity.class);
         linkButton(R.id.HomeTestImageView, MainActivity.class, false);
 
         // On récupère la dificulté avec l'index transmis par DifficultyActivity

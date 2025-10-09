@@ -27,7 +27,7 @@ public class StatsActivity extends BaseActivity {
             return insets;
         });
 
-        linkButton(R.id.HomeStatsImageView, MainActivity.class);
+        linkButton(R.id.HomeStatsImageView, MainActivity.class, false);
 
         //binding views
 
