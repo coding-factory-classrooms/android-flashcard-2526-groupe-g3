@@ -26,7 +26,7 @@ public class AboutActivity extends BaseActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        linkButton(R.id.HomeAboutImageView, MainActivity.class);
+        linkButton(R.id.HomeAboutImageView, MainActivity.class, false);
 
         TextView versionTextView = findViewById(R.id.versionTextView);
 

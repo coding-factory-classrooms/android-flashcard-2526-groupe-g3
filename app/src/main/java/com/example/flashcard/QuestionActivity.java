@@ -34,7 +34,7 @@ public class QuestionActivity extends BaseActivity {
             return insets;
         });
 
-        linkButton(R.id.HomeQuestionImageView, MainActivity.class);
+        linkButton(R.id.HomeQuestionImageView, MainActivity.class, false);
 
         //Create all the intent
         Intent srcIntent = getIntent();

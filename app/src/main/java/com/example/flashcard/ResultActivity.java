@@ -36,9 +36,9 @@ public class ResultActivity extends BaseActivity {
         TextView resultNumberText = findViewById(R.id.ResultNumberTextView);
         resultNumberText.setText(correctResultNumber);
 
-        linkButton(R.id.HomeResultImageView, MainActivity.class);
-        linkButton(R.id.QuestionButton2, ListQuestionActivity.class);
-        linkButton(R.id.BackButton, DifficultyActivity.class);
+        linkButton(R.id.HomeResultImageView, MainActivity.class, false);
+        linkButton(R.id.QuestionButton2, ListQuestionActivity.class, false);
+        linkButton(R.id.BackButton, MainActivity.class, false);
 
     }
 }
