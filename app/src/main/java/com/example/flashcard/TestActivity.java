@@ -162,8 +162,6 @@ public class TestActivity extends BaseActivity {
         TextView currentQuestionTextView = findViewById(R.id.CurrentQuestionTextView);
         currentQuestionTextView.setText("Question " + (currentQuestion + 1) + " / " +
                 difficultiesList.get(0).questions.size());
-        String currentQuestionText = ("Question " + (currentQuestion+1) + " / " + difficultiesList.get(currentDifficulty).questions.toArray().length);
-        currentQuestionTextView.setText(currentQuestionText);
         currentQuestionTextView .setTextColor(Color.BLACK);
 
         for (int i = 0; i < question.answers.size(); i++) answerIndexes.add(i);
