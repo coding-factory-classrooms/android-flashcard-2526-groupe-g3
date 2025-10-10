@@ -57,6 +57,8 @@ public class StatsActivity extends BaseActivity {
         averageTimeTextView.append(averageTime);
     }
 
+
+    //Converts a String into a formated timestamp
     private String TimestampToString(int timestamp) {
         timestamp *= 10;
         return String.format(Locale.FRANCE, "%02d:%02d:%02d",
@@ -65,6 +67,5 @@ public class StatsActivity extends BaseActivity {
                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(timestamp)),
                 TimeUnit.MILLISECONDS.toSeconds(timestamp) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timestamp)));
-
     }
 }

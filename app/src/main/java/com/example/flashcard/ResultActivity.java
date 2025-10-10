@@ -103,6 +103,7 @@ public class ResultActivity extends BaseActivity {
 
     }
 
+    //simply gets all necessary values and inserts them into shared preferences
     private void updateStats(int quizTime, int answers, int good_answers) {
         SharedPreferences prefs = getSharedPreferences("Stats", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
