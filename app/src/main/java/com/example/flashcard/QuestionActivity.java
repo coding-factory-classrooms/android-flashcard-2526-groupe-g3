@@ -2,6 +2,7 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -77,6 +79,7 @@ public class QuestionActivity extends BaseActivity {
             final int originalIndex = answerIndexes.get(i);
 
             // Create a button with the response and add it to the view
+            AppCompatButton button = new AppCompatButton(this);
             addButton(answersLayout, question.answers.get(originalIndex), () -> {
                 //Add a different toast if it's the good response or the wrong
                 if(originalIndex != question.correct){
@@ -90,7 +93,14 @@ public class QuestionActivity extends BaseActivity {
                 toast.show();
                 startActivity(intent);
                 finish();
-            });
+            }, button);
+
+            button.setTextColor(Color.WHITE);
+            button.setBackgroundResource(R.drawable.button_png);
+            button.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    150
+            ));
 
         }
     }

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".DifficultyActivity">
 
     <ImageView
@@ -19,8 +20,8 @@
 
     <ImageView
         android:id="@+id/EasyImageView"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/HardImageView"
         app:layout_constraintEnd_toStartOf="@+id/MediumImageView"
@@ -30,9 +31,9 @@
 
     <ImageView
         android:id="@+id/MediumImageView"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="10dp"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/HardcoreImageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,9 +43,9 @@
 
     <ImageView
         android:id="@+id/HardImageView"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/HardcoreImageView"
@@ -54,8 +55,8 @@
 
     <ImageView
         android:id="@+id/HardcoreImageView"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Simple"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/EasyImageView"
         app:layout_constraintStart_toStartOf="@+id/EasyImageView"
@@ -78,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Moyen"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/MediumImageView"
         app:layout_constraintStart_toStartOf="@+id/MediumImageView"
@@ -88,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Difficile"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/HardImageView"
         app:layout_constraintHorizontal_bias="0.527"
@@ -99,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hardcore"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/HardcoreImageView"
         app:layout_constraintHorizontal_bias="0.48"

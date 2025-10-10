@@ -62,6 +62,7 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
             Context context = itemView.getContext();
             questionImageView = itemView.findViewById(R.id.QuestionImageView);
             questionActivityButton= itemView.findViewById(R.id.QuestionActivityButton);
+            questionImageView.bringToFront();
 
             //Change the Activity to the Question activity with the question that is clicked
             questionActivityButton.setOnClickListener( view-> {

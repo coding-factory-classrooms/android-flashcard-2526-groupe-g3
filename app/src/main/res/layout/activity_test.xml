@@ -5,93 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7443E6"
-    android:backgroundTint="#E1C4F6"
+    android:background="@drawable/background"
     tools:context=".TestActivity">
 
     <ImageView
         android:id="@+id/PeopleImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/people_test_image" />
-
-    <Button
-        android:id="@+id/ReponseAButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#00FFFFFF"
-        android:text="Réponse A"
-        android:textColor="#871D5F"
-        app:iconTint="#F0ECEC"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseBButton"
-        app:layout_constraintEnd_toEndOf="@+id/PeopleImageView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/PeopleImageView"
-        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView"
-        app:strokeColor="#8A0357"
-        app:strokeWidth="2dp" />
-
-    <Button
-        android:id="@+id/ReponseBButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#CE5BC5"
-        android:text="Réponse B"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseCButton"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseAButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseAButton"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseAButton" />
-
-    <Button
-        android:id="@+id/ReponseCButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse C"
-        app:layout_constraintBottom_toTopOf="@+id/ReponseDButton"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseBButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseBButton"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseBButton" />
-
-    <Button
-        android:id="@+id/ReponseDButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse D"
-        app:layout_constraintBottom_toTopOf="@+id/AnswerTextView"
-        app:layout_constraintEnd_toEndOf="@+id/ReponseCButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/ReponseCButton"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseCButton" />
-
-    <TextView
-        android:id="@+id/AnswerTextView"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="Bonne réponse !"
-        android:textColor="#289E01"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/ValidateButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ReponseDButton" />
-
-    <Button
-        android:id="@+id/ValidateButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Réponse C"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/AnswerTextView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/AnswerTextView"
-        app:layout_constraintTop_toBottomOf="@+id/AnswerTextView" />
 
     <ImageView
         android:id="@+id/HomeTestImageView"
@@ -106,23 +32,12 @@
     <LinearLayout
         android:id="@+id/answersContainer"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PeopleImageView"></LinearLayout>
-
-    <TextView
-        android:id="@+id/QuestionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WHO IS THIS ?"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/answersContainer"
-        app:layout_constraintEnd_toEndOf="@+id/answersContainer"
-        app:layout_constraintStart_toStartOf="@+id/answersContainer"
-        app:layout_constraintTop_toBottomOf="@+id/PeopleImageView" />
 
     <TextView
         android:id="@+id/CurrentQuestionTextView"
@@ -141,6 +56,7 @@
         android:layout_marginTop="10dp"
         android:text="Temps restant : 0s"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

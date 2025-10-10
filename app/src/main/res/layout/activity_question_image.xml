@@ -5,25 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/QuestionActivityButton"
         android:layout_width="350dp"
         android:layout_height="100dp"
-        android:text="QUI EST-CE ?"
-        android:textAlignment="viewEnd"
+        android:background="@drawable/popup_img"
+        android:text="              QUI EST-CE ?"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/QuestionImageView"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/QuestionActivityButton"
-        app:layout_constraintStart_toStartOf="@+id/QuestionActivityButton"
-        app:layout_constraintTop_toTopOf="@+id/QuestionActivityButton"
-        app:srcCompat="@drawable/people_question_image" />
+        android:layout_width="61dp"
+        android:layout_height="65dp"
+        app:srcCompat="@drawable/people_question_image"
+        android:layout_marginStart="52dp"
+        app:layout_constraintTop_toTopOf="@id/QuestionActivityButton"
+        app:layout_constraintBottom_toBottomOf="@id/QuestionActivityButton"
+        app:layout_constraintStart_toStartOf="@id/QuestionActivityButton" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

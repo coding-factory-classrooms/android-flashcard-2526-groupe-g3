@@ -2,6 +2,7 @@ package com.example.flashcard;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -160,6 +162,9 @@ public class TestActivity extends BaseActivity {
         TextView currentQuestionTextView = findViewById(R.id.CurrentQuestionTextView);
         currentQuestionTextView.setText("Question " + (currentQuestion + 1) + " / " +
                 difficultiesList.get(0).questions.size());
+        String currentQuestionText = ("Question " + (currentQuestion+1) + " / " + difficultiesList.get(currentDifficulty).questions.toArray().length);
+        currentQuestionTextView.setText(currentQuestionText);
+        currentQuestionTextView .setTextColor(Color.BLACK);
 
         for (int i = 0; i < question.answers.size(); i++) answerIndexes.add(i);
         Collections.shuffle(answerIndexes);
@@ -167,11 +172,13 @@ public class TestActivity extends BaseActivity {
         // on créer dynamiquements les boutons réponses (c'est ici qu'on les designs)
         for (int i = 0; i < answerIndexes.size(); i++) {
             final int originalIndex = answerIndexes.get(i); // index de la réponse
-            Button answerButton = new Button(this); // on crée le bouton
+            AppCompatButton answerButton = new AppCompatButton(this); // on crée le bouton
             answerButton.setText(question.answers.get(originalIndex)); // UI du bouton
+            answerButton.setTextColor(Color.WHITE);
+            answerButton.setBackgroundResource(R.drawable.button_png);
             answerButton.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
+                    150
             ));
 
             // au clique on check la réponse
