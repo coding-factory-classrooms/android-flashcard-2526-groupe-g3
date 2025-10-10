@@ -42,7 +42,6 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
         //Create the line of the list of question
         Question question = questions.get(position);
         holder.questionImageView.setImageResource(question.id);
-        holder.questionImageView.bringToFront();
 
         //Next line add the Question to the function LinkData
         holder.linkData(question);
@@ -63,6 +62,7 @@ public class QuestionAdaptater extends RecyclerView.Adapter<QuestionAdaptater.Vi
             Context context = itemView.getContext();
             questionImageView = itemView.findViewById(R.id.QuestionImageView);
             questionActivityButton= itemView.findViewById(R.id.QuestionActivityButton);
+            questionImageView.bringToFront();
 
             //Change the Activity to the Question activity with the question that is clicked
             questionActivityButton.setOnClickListener( view-> {

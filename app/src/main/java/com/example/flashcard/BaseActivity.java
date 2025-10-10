@@ -37,7 +37,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             if (this instanceof TestActivity) {
                 TestActivity testActivity = (TestActivity) this;
                 if (testActivity.timer != null) {
-                    testActivity.timer.cancel();
+                     testActivity.timer.cancel();
                 }
             }
             // On crée un Intent pour aller vers l'activité cible

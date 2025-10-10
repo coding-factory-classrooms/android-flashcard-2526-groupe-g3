@@ -21,12 +21,13 @@
         android:id="@+id/TotalQuizTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="150dp"
         android:text="Total Quizzes Played : "
+        android:textColor="@color/black"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/TotalCorrectTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/HomeStatsImageView" />
 
     <TextView
         android:id="@+id/TotalCorrectTextView"
@@ -34,7 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Total Good Answers : "
+        android:textColor="@color/black"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/TotalPlaytimeTextView"
+        app:layout_constraintEnd_toEndOf="@+id/TotalQuizTextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/TotalQuizTextView"
         app:layout_constraintTop_toBottomOf="@+id/TotalQuizTextView" />
 
@@ -44,7 +49,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Total Playtime : "
+        android:textColor="@color/black"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/TotalAnsweredTextView"
+        app:layout_constraintEnd_toEndOf="@+id/TotalCorrectTextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/TotalCorrectTextView"
         app:layout_constraintTop_toBottomOf="@+id/TotalCorrectTextView" />
 
@@ -54,7 +63,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Total Questions Answered : "
+        android:textColor="@color/black"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/AverageTimeTextView"
+        app:layout_constraintEnd_toEndOf="@+id/TotalPlaytimeTextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/TotalPlaytimeTextView"
         app:layout_constraintTop_toBottomOf="@+id/TotalPlaytimeTextView" />
 
@@ -64,7 +77,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Average Quiz Time : "
+        android:textColor="@color/black"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TotalAnsweredTextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/TotalAnsweredTextView"
         app:layout_constraintTop_toBottomOf="@+id/TotalAnsweredTextView" />
 
