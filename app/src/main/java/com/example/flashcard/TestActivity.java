@@ -17,10 +17,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.ArrayList;
@@ -28,10 +31,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class TestActivity extends BaseActivity {
 
-    // variable pour la difficulté actuelle du quiz
-    private int currentDifficulty;
     // compteur pour passer les questions
     private int currentQuestion = 0;
     // Image qui sert pour les questions
@@ -53,6 +60,17 @@ public class TestActivity extends BaseActivity {
     // UI du timer
     private TextView timerTextView;
 
+    // Niveau de base
+    private String level = "Facile";
+
+    // Durée du timer par difficulté
+    private static final Map<String, Long> difficultyDurations = new HashMap<>() {{
+        put("Facile", 15000L);
+        put("Moyen", 10000L);
+        put("Difficile", 7000L);
+        put("Hardcore", 5000L);
+    }};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,79 +85,28 @@ public class TestActivity extends BaseActivity {
         startTime = System.currentTimeMillis() / 10;
         linkButton(R.id.HomeTestImageView, MainActivity.class, false);
 
-        // On récupère la dificulté avec l'index transmis par DifficultyActivity
-        currentDifficulty = getIntent().getIntExtra("difficulty_index", 0);
-
         // On récupère les éléments de l'UI
         questionImage = findViewById(R.id.PeopleImageView);
         answersContainer = findViewById(R.id.answersContainer);
+        timerTextView = findViewById(R.id.TimerTextView);
+
+        // On récupère le flag donné par DifficultyActivity
+        isTimeAttack = getIntent().getBooleanExtra("isTimeAttack", false);
+        // On cache ou affiche le TextView selon le mode TimeAttack
+        timerTextView.setVisibility(isTimeAttack ? View.VISIBLE : View.GONE);
 
         // Initialisation de la map
         initImageMap();
 
-        // On charge le JSON sous format String
-        String json = JsonUtils.readJsonFromRaw(this, R.raw.questions);
+        // On récupère le niveau de difficulté
+        level = getIntent().getStringExtra("level");
+        if (level == null) level = "Facile";
 
-        // Fonction qui parse le json pour remplir la liste des difficultés et des questions
-        parseJsonData(json);
-
-        // On récupère le flag donné par DifficultyActivity
-        isTimeAttack = getIntent().getBooleanExtra("isTimeAttack", false);
-
-        // On récupère l'UI du timer
-        timerTextView = findViewById(R.id.TimerTextView);
-
-        // On cache ou affiche le TextView selon le mode TimeAttack
-        if (isTimeAttack) {
-            timerTextView.setVisibility(View.VISIBLE);
-        } else {
-            timerTextView.setVisibility(View.GONE);
-        }
-
-        // Recuperation de la liste de questions de la difficulté actuelle
-        List<Question> questionsToShuffle = difficultiesList.get(currentDifficulty).questions;
-        // On melange la liste
-        Collections.shuffle(questionsToShuffle);
-
-        showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
+        // Charger les questions depuis l’API
+        fetchQuestionsFromApi(level);
 
     }
 
-    public void parseJsonData(String jsonData) {
-        try {
-            JSONObject rootObject = new JSONObject(jsonData);
-            JSONArray difficultyArray = rootObject.getJSONArray("difficulties");
-
-            for (int difficultyIndex = 0; difficultyIndex < difficultyArray.length(); difficultyIndex++) {
-                JSONObject difficultyJson = difficultyArray.getJSONObject(difficultyIndex);
-                String difficultyLevel = difficultyJson.getString("level");
-
-                JSONArray questionArray = difficultyJson.getJSONArray("questions");
-                List<Question> questionList = new ArrayList<>();
-
-                for (int questionIndex = 0; questionIndex < questionArray.length(); questionIndex++) {
-                    JSONObject questionJson = questionArray.getJSONObject(questionIndex);
-                    String imageName = questionJson.getString("image_id");
-
-                    JSONArray answerArray = questionJson.getJSONArray("answers");
-                    List<String> answerList = new ArrayList<>();
-
-                    for (int answerIndex = 0; answerIndex < answerArray.length(); answerIndex++) {
-                        answerList.add(answerArray.getString(answerIndex));
-                    }
-
-                    int correctAnswerIndex = questionJson.getInt("correct");
-                    int id = getResources().getIdentifier(imageName,"drawable", getPackageName());
-                    questionList.add(new Question(imageName, answerList, correctAnswerIndex, id));
-                }
-
-                difficultiesList.add(new Difficulty(difficultyLevel, questionList));
-            }
-
-        } catch (JSONException e) {
-            Log.e("TestActivity", "Erreur lors du parsing du JSON", e);
-        }
-    }
 
     // une fonction qui parcourt toutes les ressources drawable de l'app,
     // on vérifie si le nom de l'image commence par "question*"
@@ -162,33 +129,26 @@ public class TestActivity extends BaseActivity {
                 }
             }
         } catch (Exception e) {
-            Log.e("TestActivity", "Erreur", e);
+            Log.e("TestActivity", "Erreur initImageMap", e);
         }
     }
 
     // fonction principale pour afficher les questions (le système de quiz enfaite)
+    @SuppressLint("SetTextI18n")
     private void showQuestion(Question question) {
 
         // si mode TimeAttack on démarre le timer
-        if (isTimeAttack) {
-            startTimer();
-        }
+        if (isTimeAttack) startTimer();
+
 
         // on récupère l'ID de l'image qui correspond a la question depuis la map
         Integer imageResId = imageMap.get(question.image);
-        if (imageResId != null) {
-            questionImage.setImageResource(imageResId);
-        } else {
-            questionImage.setImageResource(R.drawable.not_found);
-        }
+        if (imageResId != null) questionImage.setImageResource(imageResId);
+        else questionImage.setImageResource(R.drawable.not_found);
 
+        // Cliquer sur l'image pour zoomer
         questionImage.setOnClickListener(v -> {
-            // Rien faire si l'image est celle par défaut
-            if (question.id == 0) {
-                return;
-            }
-            // Affiche le dialog de zoom
-            showZoomDialog(question.id);
+            if (question.id != 0) showZoomDialog(question.id);
         });
 
         // on supprime tout les boutons (au cas où ils sont encore la)
@@ -198,19 +158,14 @@ public class TestActivity extends BaseActivity {
         List<Integer> answerIndexes = new ArrayList<>();
         // on récupère le textview qui affiche le numéro de la question (il faut le replacer sur l'UI)
         TextView currentQuestionTextView = findViewById(R.id.CurrentQuestionTextView);
-        String currentQuestionText = ("Question " + (currentQuestion+1) + " / " + difficultiesList.get(currentDifficulty).questions.toArray().length);
-        currentQuestionTextView.setText(currentQuestionText);
+        currentQuestionTextView.setText("Question " + (currentQuestion + 1) + " / " +
+                difficultiesList.get(0).questions.size());
 
-        for (int i = 0; i < question.answers.size(); i++) {
-            answerIndexes.add(i);
-        }
-
-        // Mélange la liste
+        for (int i = 0; i < question.answers.size(); i++) answerIndexes.add(i);
         Collections.shuffle(answerIndexes);
 
         // on créer dynamiquements les boutons réponses (c'est ici qu'on les designs)
         for (int i = 0; i < answerIndexes.size(); i++) {
-            // Index original
             final int originalIndex = answerIndexes.get(i); // index de la réponse
             Button answerButton = new Button(this); // on crée le bouton
             answerButton.setText(question.answers.get(originalIndex)); // UI du bouton
@@ -231,7 +186,7 @@ public class TestActivity extends BaseActivity {
     private void checkAnswer(int selectedIndex) {
 
         // on récupère la question actuelle selon la difficulté sélectionné, et l'index
-        Question question = difficultiesList.get(currentDifficulty).questions.get(currentQuestion);
+        Question question = difficultiesList.get(0).questions.get(currentQuestion);
 
         // on vérifie si la réponse est correcte ou non
         if (selectedIndex == question.correct) {
@@ -246,16 +201,14 @@ public class TestActivity extends BaseActivity {
     }
 
     // fonction pour le fonctionnement du timer du TimeAttack
+    @SuppressLint("SetTextI18n")
     private void startTimer() {
 
 
         if (!isTimeAttack) return;
 
         // Durée des timers : facile, moyen, difficle, hardcore
-        long[] questionDurations = {15000, 10000, 7000, 5000};
-        // on récupère le timer qui correspond a la difficulté sélectionnée
-        long currentQuestionDuration = questionDurations[currentDifficulty];
-
+        long currentQuestionDuration = difficultyDurations.getOrDefault(level, 15000L);
 
         timerTextView.setText("Temps restants : " + (currentQuestionDuration / 1000) + "s");
         timerTextView.setVisibility(View.VISIBLE);
@@ -285,15 +238,19 @@ public class TestActivity extends BaseActivity {
         }.start();
     }
 
+    // Passer à la question suivante ou finir le quiz
     private void nextQuestion() {
+
+        // On passe à la question suivante
         currentQuestion++;
-        if (currentQuestion < difficultiesList.get(currentDifficulty).questions.size()) {
-            showQuestion(difficultiesList.get(currentDifficulty).questions.get(currentQuestion));
+
+        // si y a encore des questions on affiche la question suivante sinon on envoie la vue ResultActivity
+        if (currentQuestion < difficultiesList.get(0).questions.size()) {
+            showQuestion(difficultiesList.get(0).questions.get(currentQuestion));
         } else {
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("correctAnswerCount", correctAnswerCount);
             intent.putExtra("totalQuestions", currentQuestion);
-            intent.putExtra("difficulty", currentDifficulty);
             intent.putParcelableArrayListExtra("failedQuestion", failedQuestion);
             long testTime = (System.currentTimeMillis() / 10) - startTime;
             intent.putExtra("testTime", testTime);
@@ -301,6 +258,80 @@ public class TestActivity extends BaseActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private void fetchQuestionsFromApi(String level) {
+
+        // on crée un client htpp pour les requêtes
+        OkHttpClient client = new OkHttpClient();
+
+        String url = "https://students.gryt.tech/api/L2/sosies/";
+
+        // requête GET
+        Request request = new Request.Builder().url(url).build();
+
+        // requête asynchrone
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() ->
+                        Toast.makeText(TestActivity.this, "Erreur réseau", Toast.LENGTH_SHORT).show()
+                );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                // Il faut que la réponse est un contenu
+                if (response.isSuccessful() && response.body() != null) {
+                    //On récupère le json
+                    String json = response.body().string();
+
+                    // On utilise Gson pour parser le JSON en objet Java
+                    Gson gson = new Gson();
+                    APIElements.ApiResponse apiResponse = gson.fromJson(json, APIElements.ApiResponse.class);
+
+                    // Chercher la difficulté sélectionnée
+                    APIElements.ApiDifficulty selectedDifficulty = null;
+                    for (APIElements.ApiDifficulty diff : apiResponse.difficulties) {
+                        if (diff.level.equalsIgnoreCase(level)) {
+                            selectedDifficulty = diff;
+                            break;
+                        }
+                    }
+
+                    // Si le level actuelle n'a pas de questions on finish
+                    if (selectedDifficulty == null || selectedDifficulty.questions == null || selectedDifficulty.questions.isEmpty()) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(TestActivity.this, "Aucune question disponible pour ce niveau.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        });
+                        return;
+                    }
+
+                    // Conversion des questions API en objets Question
+                    List<Question> questionList = new ArrayList<>();
+                    for (APIElements.ApiQuestion apiQ : selectedDifficulty.questions) {
+                        // On récupère l'ID de l'image depuis la map
+                        int id = imageMap.getOrDefault(apiQ.image_id, 0);
+                        // On crée un objet Question et on le met dans la liste
+                        questionList.add(new Question(apiQ.image_id, apiQ.answers, apiQ.correct, id));
+                    }
+
+                    // on vide la liste (au càs où) et on ajoute la nouvelle
+                    difficultiesList.clear();
+                    difficultiesList.add(new Difficulty(level, questionList));
+
+                    // Comme on est en thread réseau, on doit mettre à jour l'UI dans runOnUiThread
+                    runOnUiThread(() -> {
+                        currentQuestion = 0; // Première question
+                        // On mélange
+                        Collections.shuffle(difficultiesList.get(0).questions);
+                        // On affiche
+                        showQuestion(difficultiesList.get(0).questions.get(currentQuestion));
+                    });
+                }
+            }
+        });
     }
 
     public void showZoomDialog(int imageResId) {

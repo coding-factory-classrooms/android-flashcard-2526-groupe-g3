@@ -20,7 +20,9 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class ResultActivity extends BaseActivity {
 
@@ -43,27 +45,25 @@ public class ResultActivity extends BaseActivity {
         Intent intent = getIntent();
         int correctAnswerCount = intent.getIntExtra("correctAnswerCount", 0);
         int totalQuestions = intent.getIntExtra("totalQuestions", 0);
-        int difficulty = intent.getIntExtra("difficulty", 0);
+        String level = intent.getStringExtra("level"); // niveau récupéré depuis l'API
+        if (level == null) level = "Facile";
 
+        // Map pour associer le nom du niveau à un index (pour la popup)
+        Map<String, Integer> levelMap = new HashMap<>();
+        levelMap.put("Facile", 0);
+        levelMap.put("Moyen", 1);
+        levelMap.put("Difficile", 2);
+        levelMap.put("Hardcore", 3);
 
-        String difficultyName = "";
-        switch (difficulty){
-            case 0:
-                difficultyName = "SIMPLE";
-                break;
-            case 1:
-                difficultyName = "MOYEN";
-                break;
-            case 2:
-                difficultyName = "DIFFICILE";
-                break;
-            case 3:
-                difficultyName = "HARDCORE";
-                break;
-        }
+        // Récupérer l'index correspondant au niveau
+        int difficultyIndex = levelMap.getOrDefault(level, 0);
 
         //transforming long time to string and adding dot after seconds, then displaying it
         long testTime = intent.getLongExtra("testTime", 0);
+
+        // Mettre à jour les stats
+        updateStats((int) testTime, totalQuestions, correctAnswerCount);
+
         String testTimeText = Long.toString(testTime);
         testTimeText = new StringBuilder(testTimeText).insert(testTimeText.length()-2, ".").toString();
         testTimeText = testTimeText.length()<=3 ? "0" + testTimeText : testTimeText;
@@ -85,7 +85,7 @@ public class ResultActivity extends BaseActivity {
 
 
         //write share text
-        String shareText = "YOOO JAI FAIT LE TEST SOSIE EN " + difficultyName + " EN " + testTimeText + " SECONDES ET JAI EU " + correctResultNumber;
+        String shareText = "YOOO JAI FAIT LE TEST SOSIE EN " + level + " EN " + testTimeText + " SECONDES ET JAI EU " + correctResultNumber;
 
         shareImageView.setOnClickListener(v -> {
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -98,7 +98,7 @@ public class ResultActivity extends BaseActivity {
 
         findViewById(R.id.QuestionButton2).setOnClickListener(view ->{
             ArrayList<Question> questions= intent.getParcelableArrayListExtra("failedQuestion");
-            onButtonShowPopupWindowClick(view,questions , null, difficulty);
+            onButtonShowPopupWindowClick(view, questions, null, difficultyIndex);
         });
 
     }
